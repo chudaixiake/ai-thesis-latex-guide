@@ -7,6 +7,7 @@
 - LaTeX 是正式主稿，最终排版和提交以 `paper/main.tex` 及其章节文件为准。
 - Word 版只用于导师批注和阶段审阅，不作为最终排版源文件。
 - 导师返回的 Word 批注不要直接覆盖 LaTeX；先整理成修改清单，再逐条改回 LaTeX。
+- Word 审阅稿的格式规格参考 `word/ecust-word-format-spec.md`，该规格从华理 LaTeX 模板参数提取。
 
 ## 目录
 

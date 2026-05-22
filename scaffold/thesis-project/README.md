@@ -42,6 +42,12 @@ docs/review/
 
 然后让 Codex 或 Claude Code 根据 `docs/word-review-workflow.md` 整理修改清单并改回 LaTeX。
 
+Word 审阅稿格式可参考：
+
+```text
+word/ecust-word-format-spec.md
+```
+
 ## 常用命令
 
 ```powershell

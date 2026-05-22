@@ -25,6 +25,12 @@ review-draft.docx  做文字批注
 
 导师如果主要改文字，用 Word 批注；如果指出格式问题，以 PDF 为准。
 
+如果要让 Word 审阅稿尽量接近华理 LaTeX 模板格式，请参考：
+
+```text
+word-template/ecust-word-format-spec.md
+```
+
 ## 一键导出脚本
 
 一键论文项目骨架自带：

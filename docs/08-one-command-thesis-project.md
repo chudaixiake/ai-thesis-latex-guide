@@ -63,6 +63,8 @@ GraduationThesis/
     raw/
     processed/
   scripts/
+  word/
+    ecust-word-format-spec.md
 ```
 
 ## 每个文件的作用
@@ -75,6 +77,7 @@ GraduationThesis/
 - `docs/ai-skills-workflow.md`：写论文时应该调用哪些 skills。
 - `docs/word-review-workflow.md`：导师使用 Word 批注时的往返流程。
 - `paper/main.tex`：简化 LaTeX 主文件。
+- `word/ecust-word-format-spec.md`：从华理 LaTeX 模板提取的 Word 格式映射规格。
 - `paper/chapters/`：分章节正文。
 - `figures/`：论文图片。
 - `data/`：原始数据和处理后数据。

@@ -11,6 +11,7 @@
 - 一键拉取学校模板仓库并改写占位内容的脚本
 - 一键创建完整论文项目目录的脚本
 - LaTeX 主稿与 Word 导师批注的往返流程
+- 从华理 LaTeX 模板提取的 Word 格式映射规格
 
 > 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。仓库内置 `template/` 是原创教学骨架；如果需要使用与 `blanche07/ecust-master-thesis-latex` 相同格式，请运行本项目提供的拉取脚本生成本地模板。正式提交前请以研究生院、学院和导师给出的最新要求为准。若你基于学校或他人的开源模板改造论文，请遵守对应许可证并保留必要署名。
 
@@ -82,6 +83,7 @@ template/   原创 LaTeX 论文模板骨架
 7. [华理硕士论文项目建议](docs/07-ecust-master-thesis-workflow.md)
 8. [一键创建论文项目](docs/08-one-command-thesis-project.md)
 9. [Word 批注往返流程](docs/09-word-review-workflow.md)
+10. [从 LaTeX 模板提取 Word 格式](docs/10-ecust-word-format-spec.md)
 
 ## 环境检查
 
