@@ -7,7 +7,12 @@ param(
 $ErrorActionPreference = "Stop"
 
 $root = Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")
-$destPath = Join-Path $root $Destination
+if ([System.IO.Path]::IsPathRooted($Destination)) {
+    $destPath = $Destination
+}
+else {
+    $destPath = Join-Path $root $Destination
+}
 
 if ((Test-Path -LiteralPath $destPath) -and -not $Force) {
     throw "Destination already exists: $destPath. Use -Force to replace it."
@@ -15,8 +20,12 @@ if ((Test-Path -LiteralPath $destPath) -and -not $Force) {
 
 if (Test-Path -LiteralPath $destPath) {
     $resolved = Resolve-Path -LiteralPath $destPath
-    if (-not $resolved.Path.StartsWith($root.Path)) {
-        throw "Refusing to remove path outside repository: $($resolved.Path)"
+    $leaf = Split-Path -Leaf $resolved.Path
+    $parent = Split-Path -Parent $resolved.Path
+    $driveRoot = [System.IO.Path]::GetPathRoot($resolved.Path)
+    $safeTemplateNames = @("template", "ecust-master-thesis")
+    if (($resolved.Path -eq $driveRoot) -or [string]::IsNullOrWhiteSpace($parent) -or ($safeTemplateNames -notcontains $leaf)) {
+        throw "Refusing to remove non-template path: $($resolved.Path)"
     }
     Remove-Item -LiteralPath $resolved.Path -Recurse -Force
 }

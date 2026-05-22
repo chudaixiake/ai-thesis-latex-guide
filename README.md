@@ -9,6 +9,7 @@
 - Codex skills 安装与调用流程
 - 一个面向华理硕士论文场景的原创 LaTeX 模板骨架
 - 一键拉取学校模板仓库并改写占位内容的脚本
+- 一键创建完整论文项目目录的脚本
 
 > 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。仓库内置 `template/` 是原创教学骨架；如果需要使用与 `blanche07/ecust-master-thesis-latex` 相同格式，请运行本项目提供的拉取脚本生成本地模板。正式提交前请以研究生院、学院和导师给出的最新要求为准。若你基于学校或他人的开源模板改造论文，请遵守对应许可证并保留必要署名。
 
@@ -46,10 +47,17 @@ cd template\ecust-master-thesis
 latexmk -xelatex template.tex
 ```
 
+如果你想直接创建完整论文项目：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
+```
+
 ## 项目结构
 
 ```text
 docs/       教程文档
+scaffold/   可复制的完整论文项目骨架
 scripts/    环境检查脚本
 template/   原创 LaTeX 论文模板骨架
 ```
@@ -65,6 +73,7 @@ template/   原创 LaTeX 论文模板骨架
 5. [常见编译问题](docs/05-troubleshooting.md)
 6. [安装和使用 Codex Skills](docs/06-codex-skills.md)
 7. [华理硕士论文项目建议](docs/07-ecust-master-thesis-workflow.md)
+8. [一键创建论文项目](docs/08-one-command-thesis-project.md)
 
 ## 环境检查
 

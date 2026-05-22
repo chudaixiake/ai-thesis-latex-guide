@@ -1,0 +1,81 @@
+\documentclass[UTF8,a4paper,twoside]{ctexart}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
+
+\addbibresource{../docs/references.bib}
+\graphicspath{{../figures/}}
+
+\geometry{left=2.7cm,right=2.7cm,top=2.8cm,bottom=2.4cm,headheight=15pt}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
+\linespread{1.35}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CO,CE]{华东理工大学硕士学位论文}
+\fancyfoot[CO,CE]{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  {\heiti\zihao{2}论文题目\par}
+  \vspace{2cm}
+  {\zihao{4}作者姓名\par}
+  \vspace{0.5cm}
+  {\zihao{4}华东理工大学\par}
+  \vspace{0.5cm}
+  {\zihao{4}学院与专业\par}
+  \vspace{0.5cm}
+  {\zihao{4}指导教师\par}
+  \vfill
+  {\zihao{4}\today\par}
+\end{titlepage}
+
+\pagenumbering{Roman}
+
+\section*{摘要}
+\addcontentsline{toc}{section}{摘要}
+这里填写中文摘要。
+
+\noindent\textbf{关键词：}关键词一；关键词二；关键词三
+
+\newpage
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+Write the English abstract here.
+
+\noindent\textbf{Keywords:} keyword one; keyword two; keyword three
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\input{chapters/01-introduction}
+\input{chapters/02-literature}
+\input{chapters/03-method}
+\input{chapters/04-analysis}
+\input{chapters/05-conclusion}
+
+\newpage
+\addcontentsline{toc}{section}{参考文献}
+\printbibliography[title={参考文献}]
+
+\newpage
+\section*{致谢}
+\addcontentsline{toc}{section}{致谢}
+这里填写致谢内容。
+
+\end{document}
