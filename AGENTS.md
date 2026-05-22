@@ -1,0 +1,8 @@
+# Repository Instructions
+
+- Write documentation in concise Chinese.
+- Do not copy third-party LaTeX templates into this repository unless their license is checked and attribution is preserved.
+- Keep the template generic and educational.
+- Prefer commands that work on Windows PowerShell.
+- Do not fabricate Zotero, TeX Live, or LaTeX package behavior.
+- When updating the template, keep `latexmk -xelatex main.tex` as the primary compile path.
