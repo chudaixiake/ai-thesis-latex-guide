@@ -1,76 +1,419 @@
 # ECUST Master Thesis AI LaTeX Guide
 
-面向华东理工大学硕士学位论文写作的 LaTeX、Zotero、Codex / Claude Code 项目化工作流示例。内容包括：
+面向华东理工大学硕士学位论文写作的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理导师 Word 批注。
 
-- TeX Live 安装与环境检查
-- VS Code / LaTeX Workshop 配置
-- Zotero + Better BibTeX 管理参考文献
-- Codex / Claude Code 辅助写作流程
-- Codex skills 安装与调用流程
-- 一个面向华理硕士论文场景的原创 LaTeX 模板骨架
-- 一键拉取学校模板仓库并改写占位内容的脚本
-- 一键创建完整论文项目目录的脚本
-- LaTeX 主稿与 Word 导师批注的往返流程
-- 从华理 LaTeX 模板提取的 Word 格式映射规格
+> 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。正式提交前请以研究生院、学院和导师给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
 
-> 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。仓库内置 `template/` 是原创教学骨架；如果需要使用与 `blanche07/ecust-master-thesis-latex` 相同格式，请运行本项目提供的拉取脚本生成本地模板。正式提交前请以研究生院、学院和导师给出的最新要求为准。若你基于学校或他人的开源模板改造论文，请遵守对应许可证并保留必要署名。
+## 这个项目解决什么
 
-## 快速开始
+它把从零开始写华理硕士论文需要配置的内容整理成一套可复制流程：
 
-1. 安装 TeX Live，推荐完整安装。
-2. 安装 VS Code 和 LaTeX Workshop 插件。
-3. 安装 Zotero 和 Better BibTeX。
-4. 安装论文写作相关 Codex skills。
-5. 用 Zotero 导出 `template/references.bib`。
-6. 如果要使用学校模板仓库的格式，运行：
+- 安装 TeX Live、VS Code、LaTeX Workshop、Zotero、Better BibTeX。
+- 安装适合论文写作的 Codex skills。
+- 一键生成类似 `D:\GraduationThesis` 的论文项目目录。
+- 可选拉取 `blanche07/ecust-master-thesis-latex`，生成同格式 LaTeX 模板目录。
+- 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定论文流程工作。
+- 管理 Zotero 导出的 `references.bib`。
+- 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
+- 从华理 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
+
+## 最短路径
+
+已经安装好 TeX Live、VS Code、Zotero、Pandoc，并且 Codex skills 也装好后，只需要：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1
-```
-
-该命令会生成：
-
-```text
-template/ecust-master-thesis/
-```
-
-7. 根据学院要求修改题目、学院、专业、导师等信息。
-8. 进入模板目录编译：
-
-```powershell
-cd template
-latexmk -xelatex main.tex
-```
-
-如果使用脚本生成的学校模板格式：
-
-```powershell
-cd template\ecust-master-thesis
-latexmk -xelatex template.tex
-```
-
-如果你想直接创建完整论文项目：
-
-```powershell
+git clone https://github.com/chudaixiake/ai-thesis-latex-guide.git D:\ai-thesis-latex-guide
+cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
 ```
 
-如果已有论文项目，可以用教程仓库里的通用脚本导出 Word 审阅稿：
+然后进入新项目：
 
 ```powershell
+cd D:\GraduationThesis
+```
+
+让 Codex 或 Claude Code 开始：
+
+```text
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+```
+
+## 最终生成的论文项目
+
+运行本项目的初始化脚本后，会生成类似：
+
+```text
+D:\GraduationThesis
+├─ AGENTS.md
+├─ README.md
+├─ docs
+│  ├─ thesis-config.md
+│  ├─ outline.md
+│  ├─ literature-matrix.md
+│  ├─ references.bib
+│  ├─ ai-skills-workflow.md
+│  ├─ word-review-workflow.md
+│  ├─ export
+│  ├─ review
+│  └─ notes
+├─ paper
+│  ├─ main.tex
+│  ├─ chapters
+│  │  ├─ 01-introduction.tex
+│  │  ├─ 02-literature.tex
+│  │  ├─ 03-method.tex
+│  │  ├─ 04-analysis.tex
+│  │  └─ 05-conclusion.tex
+│  ├─ assets
+│  └─ template
+├─ figures
+├─ data
+│  ├─ raw
+│  └─ processed
+├─ scripts
+│  └─ export-review-docx.ps1
+└─ word
+   └─ ecust-word-format-spec.md
+```
+
+其中：
+
+- `AGENTS.md`：给 Codex / Claude Code 的长期项目规则。
+- `docs/thesis-config.md`：题目、学院、专业、导师、研究问题、方法等。
+- `docs/outline.md`：论文大纲。
+- `docs/references.bib`：Zotero Better BibTeX 自动导出的参考文献库。
+- `docs/ai-skills-workflow.md`：论文各阶段应该调用哪些 skills。
+- `docs/word-review-workflow.md`：导师 Word 批注往返流程。
+- `paper/`：LaTeX 主稿。
+- `word/ecust-word-format-spec.md`：从华理 LaTeX 模板提取的 Word 格式映射。
+
+## 第 1 步：安装基础软件
+
+必须安装：
+
+- TeX Live，建议完整安装。
+- VS Code。
+- LaTeX Workshop 插件。
+- Zotero。
+- Better BibTeX 插件。
+- Pandoc。
+
+安装和检查说明：
+
+- [安装 TeX Live](docs/01-install-texlive.md)
+- [配置 VS Code 与 LaTeX Workshop](docs/02-vscode-latex-workshop.md)
+- [配置 Zotero 与 Better BibTeX](docs/03-zotero-better-bibtex.md)
+- [常见编译问题](docs/05-troubleshooting.md)
+
+环境检查：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/check-latex-env.ps1
+```
+
+应能找到：
+
+```text
+xelatex
+biber
+latexmk
+kpsewhich
+```
+
+如果电脑同时有 MiKTeX 和 TeX Live，确保 TeX Live 排在 PATH 前面：
+
+```text
+D:\texlive\2026\bin\windows
+```
+
+## 第 2 步：安装论文写作 skills
+
+推荐安装并使用这些 skills。
+
+通用学术论文流程：
+
+- `academic-pipeline`
+- `academic-paper`
+- `deep-research`
+- `academic-paper-reviewer`
+- `awesome-ai-research-writing`
+- `humanizer`
+- `doc-coauthoring`
+
+Nature 风格科研写作：
+
+- `nature-academic-search`
+- `nature-reader`
+- `nature-writing`
+- `nature-citation`
+- `nature-polishing`
+- `nature-data`
+- `nature-figure`
+- `nature-response`
+- `nature-paper2ppt`
+
+Nature skills 来源：
+
+```text
+https://github.com/Yuan1z0825/nature-skills
+```
+
+在 Codex 中可以直接说：
+
+```text
+从 Yuan1z0825/nature-skills 安装所有 skills
+```
+
+手动安装命令：
+
+```powershell
+python "$env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" `
+  --repo Yuan1z0825/nature-skills `
+  --path skills/nature-academic-search `
+         skills/nature-citation `
+         skills/nature-data `
+         skills/nature-figure `
+         skills/nature-paper2ppt `
+         skills/nature-polishing `
+         skills/nature-reader `
+         skills/nature-response `
+         skills/nature-writing
+```
+
+安装后重启 Codex。
+
+更详细说明见：
+
+[安装和使用 Codex Skills](docs/06-codex-skills.md)
+
+## 第 3 步：一键创建论文项目
+
+在本教程仓库根目录运行：
+
+```powershell
+cd D:\ai-thesis-latex-guide
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
+```
+
+如果希望同时拉取华理 LaTeX 模板格式：
+
+```powershell
+cd D:\ai-thesis-latex-guide
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
+```
+
+这个命令会：
+
+- 复制 `scaffold/thesis-project/` 到目标目录。
+- 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
+- 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
+- 可选拉取 `blanche07/ecust-master-thesis-latex` 到 `paper/template/`。
+- 初始化 Git 并提交第一版。
+
+详细说明：
+
+[一键创建论文项目](docs/08-one-command-thesis-project.md)
+
+## 第 4 步：配置 Zotero 参考文献
+
+在 Zotero 中新建 Collection：
+
+```text
+GraduationThesis
+```
+
+右键导出：
+
+```text
+Export Collection...
+```
+
+格式选择：
+
+```text
+Better BibLaTeX
+```
+
+勾选：
+
+```text
+Keep updated
+```
+
+保存到：
+
+```text
+D:\GraduationThesis\docs\references.bib
+```
+
+LaTeX 中引用：
+
+```latex
+\cite{yourCitationKey}
+```
+
+## 第 5 步：让 Codex 或 Claude Code 开始干活
+
+进入生成后的论文项目，先让 AI 读取规则：
+
+```text
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+```
+
+补全论文配置：
+
+```text
+根据我的题目和研究方向，帮我补全 docs/thesis-config.md。不确定的地方标注 [待确认]。
+```
+
+细化大纲：
+
+```text
+使用 academic-paper，基于 docs/thesis-config.md，帮我细化 docs/outline.md。
+```
+
+写章节：
+
+```text
+使用 academic-paper 和 nature-writing，直接修改 paper/chapters/01-introduction.tex。
+目标：补全研究背景和研究意义。
+依据：docs/thesis-config.md、docs/outline.md、docs/references.bib。
+限制：不要编造引用；没有来源的位置用 [需要引用] 标记。
+```
+
+查引用：
+
+```text
+使用 nature-citation，检查 paper/chapters 中所有 citation key 是否存在于 docs/references.bib。
+```
+
+审稿：
+
+```text
+使用 academic-paper-reviewer，按硕士论文标准审查当前论文结构、论证、方法、引用和格式问题。
+```
+
+## 第 6 步：编译 LaTeX/PDF
+
+简化模板：
+
+```powershell
+cd D:\GraduationThesis\paper
+latexmk -xelatex main.tex
+```
+
+如果使用 `paper/template/` 中的华理模板：
+
+```powershell
+cd D:\GraduationThesis\paper\template
+latexmk -xelatex template.tex
+```
+
+参考文献使用：
+
+```latex
+\usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
+```
+
+## 第 7 步：处理老师 Word 批注
+
+推荐双轨制：
+
+```text
+PDF：看最终格式
+Word：给导师批注文字
+```
+
+导出 Word 审阅稿：
+
+```powershell
+cd D:\GraduationThesis
+powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+或从本教程仓库对指定项目导出：
+
+```powershell
+cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1 -ProjectRoot D:\GraduationThesis
 ```
 
-## 项目结构
+默认输出：
 
 ```text
-docs/       教程文档
-scaffold/   可复制的完整论文项目骨架
-scripts/    环境检查脚本
-template/   原创 LaTeX 论文模板骨架
+D:\GraduationThesis\docs\export\review-draft.docx
 ```
 
-`template/ecust-master-thesis/` 是本地生成目录，不提交到本仓库。它来自 `blanche07/ecust-master-thesis-latex`，用于保持学校模板仓库格式一致。
+建议同时给导师：
+
+```text
+docs/export/review-draft.pdf
+docs/export/review-draft.docx
+```
+
+导师返回批注后放入：
+
+```text
+docs/review/
+```
+
+再让 AI 处理：
+
+```text
+请读取 docs/review/supervisor-comments-YYYYMMDD.docx，整理导师所有批注和修改建议，生成 docs/revision-roadmap-YYYYMMDD.md。
+```
+
+然后：
+
+```text
+根据 docs/revision-roadmap-YYYYMMDD.md，逐条修改 paper/chapters 中对应章节。不要改动未提到的内容。
+```
+
+详细说明：
+
+[Word 批注往返流程](docs/09-word-review-workflow.md)
+
+## 第 8 步：Word 格式映射
+
+如果需要让 Word 审阅稿尽量接近华理 LaTeX 模板格式，参考：
+
+```text
+word-template/ecust-word-format-spec.md
+```
+
+该文件从华理 LaTeX 模板提取：
+
+- 页面设置
+- 正文字体和段落
+- 页眉页脚
+- 目录
+- 标题样式
+- 摘要和关键词
+- 图表题注
+- 参考文献
+
+详细说明：
+
+[从 LaTeX 模板提取 Word 格式](docs/10-ecust-word-format-spec.md)
+
+## 仓库结构
+
+```text
+docs/          教程文档
+scaffold/      可复制的完整论文项目骨架
+scripts/       检查、初始化、模板准备、Word 导出脚本
+template/      原创简化 LaTeX 示例模板
+word-template/ 从华理 LaTeX 模板提取的 Word 格式映射
+```
+
+`template/ecust-master-thesis/` 是本地生成目录，来自：
+
+```text
+https://github.com/blanche07/ecust-master-thesis-latex
+```
+
+它不会提交到本仓库。
 
 ## 推荐阅读顺序
 
@@ -85,21 +428,6 @@ template/   原创 LaTeX 论文模板骨架
 9. [Word 批注往返流程](docs/09-word-review-workflow.md)
 10. [从 LaTeX 模板提取 Word 格式](docs/10-ecust-word-format-spec.md)
 
-## 环境检查
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/check-latex-env.ps1
-```
-
-需要看到这些命令都存在：
-
-```text
-xelatex
-biber
-latexmk
-kpsewhich
-```
-
 ## 许可
 
-本教程和模板骨架使用 MIT License 发布。第三方工具、字体、插件和学校模板各自遵守其原始许可证。
+本教程和原创骨架使用 MIT License 发布。第三方工具、字体、插件和学校模板各自遵守其原始许可证。
