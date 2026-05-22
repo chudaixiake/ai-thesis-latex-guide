@@ -1,0 +1,85 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{sample2024}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=aab4811cffaec3a78c2359cef8c51af4}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={San},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f2b29623b71270c404b47c5506ca722c}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Si},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{namea}{2}{}{%
+        {{hash=aab4811cffaec3a78c2359cef8c51af4}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={San},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f2b29623b71270c404b47c5506ca722c}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Si},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{cd83d7e131c5bbbb869152f0d69b96a2}
+      \strng{fullhash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{fullhashraw}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{bibnamehash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{authorbibnamehash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{authornamehash}{cd83d7e131c5bbbb869152f0d69b96a2}
+      \strng{authorfullhash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{authorfullhashraw}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{nameabibnamehash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{nameanamehash}{cd83d7e131c5bbbb869152f0d69b96a2}
+      \strng{nameafullhash}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \strng{nameafullhashraw}{7f8a32c953c8e2fcff1df88a943dcb30}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Examples}
+      \field{langid}{english}
+      \field{languageid}{english}
+      \field{lansortorder}{4}
+      \field{number}{1}
+      \field{title}{A Sample Article for Thesis Writing}
+      \field{usera}{J}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{volume}{1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+      \keyw{sample2024}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
