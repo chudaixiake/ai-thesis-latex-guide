@@ -22,6 +22,26 @@ scripts/        数据处理和绘图脚本。
 4. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
 5. 编译 `paper/main.tex`。
 
+## 导出 Word 给导师批注
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+默认输出：
+
+```text
+docs/export/review-draft.docx
+```
+
+导师返回的批注版 Word 放到：
+
+```text
+docs/review/
+```
+
+然后让 Codex 或 Claude Code 根据 `docs/word-review-workflow.md` 整理修改清单并改回 LaTeX。
+
 ## 常用命令
 
 ```powershell

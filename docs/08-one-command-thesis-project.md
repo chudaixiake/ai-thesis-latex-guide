@@ -43,7 +43,10 @@ GraduationThesis/
     literature-matrix.md
     references.bib
     ai-skills-workflow.md
+    word-review-workflow.md
     notes/
+    export/
+    review/
   paper/
     main.tex
     README.md
@@ -70,6 +73,7 @@ GraduationThesis/
 - `docs/literature-matrix.md`：文献矩阵。
 - `docs/references.bib`：Zotero Better BibTeX 自动导出的参考文献库。
 - `docs/ai-skills-workflow.md`：写论文时应该调用哪些 skills。
+- `docs/word-review-workflow.md`：导师使用 Word 批注时的往返流程。
 - `paper/main.tex`：简化 LaTeX 主文件。
 - `paper/chapters/`：分章节正文。
 - `figures/`：论文图片。
@@ -143,6 +147,39 @@ https://github.com/blanche07/ecust-master-thesis-latex
 
 ```text
 使用 academic-paper-reviewer，按硕士论文标准审查当前论文结构、论证、方法、引用和格式问题。
+```
+
+## 导出 Word 给导师批注
+
+```powershell
+cd D:\GraduationThesis
+powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+默认生成：
+
+```text
+docs/export/review-draft.docx
+```
+
+这个 Word 文件用于导师批注，不保证与最终 LaTeX PDF 完全同版。
+
+导师返回的批注版放入：
+
+```text
+docs/review/
+```
+
+然后让 Codex 或 Claude Code 处理：
+
+```text
+请读取 docs/review/supervisor-comments-YYYYMMDD.docx，整理导师所有批注和修改建议，生成 docs/revision-roadmap-YYYYMMDD.md。
+```
+
+再改回 LaTeX：
+
+```text
+根据 docs/revision-roadmap-YYYYMMDD.md，逐条修改 paper/chapters 中对应章节。不要改动未提到的内容。
 ```
 
 ## Zotero 配置

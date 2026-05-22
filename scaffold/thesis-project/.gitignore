@@ -15,6 +15,9 @@
 *.toc
 *.vrb
 *.xdv
+*.pdf
+docs/export/*.docx
+docs/review/*.docx
 *.gz
 *.tmp
 *.bak

@@ -47,6 +47,7 @@
 - Prefer concise paragraphs with clear topic sentences.
 - Keep terminology consistent across all chapters.
 - Use `docs/literature-matrix.md` or a spreadsheet to track papers before writing the literature review.
+- For supervisor Word comments, follow `docs/word-review-workflow.md`: export Word files to `docs/export/`, store returned annotated files in `docs/review/`, summarize comments into a revision roadmap, then apply changes back to LaTeX.
 
 ## LaTeX Rules
 
