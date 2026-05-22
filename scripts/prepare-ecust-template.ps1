@@ -1,6 +1,6 @@
 param(
-    [string]$Destination = "template/ecust-master-thesis",
-    [string]$Source = "C:\Users\xiaoy\Desktop\ecust-master-thesis-latex-main",
+    [string]$Destination = "template/ecust-master-prepared",
+    [string]$Source = "",
     [string]$Repo = "",
     [switch]$Force
 )
@@ -8,11 +8,22 @@ param(
 $ErrorActionPreference = "Stop"
 
 $root = Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")
+if ([string]::IsNullOrWhiteSpace($Source)) {
+    $Source = Join-Path $root "format\template\ecust-master"
+}
+
 if ([System.IO.Path]::IsPathRooted($Destination)) {
     $destPath = [System.IO.Path]::GetFullPath($Destination)
 }
 else {
     $destPath = [System.IO.Path]::GetFullPath((Join-Path $root $Destination))
+}
+
+if ($Source -and (Test-Path -LiteralPath $Source)) {
+    $sourcePath = [System.IO.Path]::GetFullPath((Resolve-Path -LiteralPath $Source).Path)
+    if ($sourcePath -eq $destPath) {
+        throw "Source and destination are the same path: $destPath"
+    }
 }
 
 if ((Test-Path -LiteralPath $destPath) -and -not $Force) {
@@ -24,7 +35,7 @@ if (Test-Path -LiteralPath $destPath) {
     $leaf = Split-Path -Leaf $resolved.Path
     $parent = Split-Path -Parent $resolved.Path
     $driveRoot = [System.IO.Path]::GetPathRoot($resolved.Path)
-    $safeTemplateNames = @("template", "ecust-master-thesis")
+    $safeTemplateNames = @("template", "ecust-master", "ecust-master-prepared")
     if (($resolved.Path -eq $driveRoot) -or [string]::IsNullOrWhiteSpace($parent) -or ($safeTemplateNames -notcontains $leaf)) {
         throw "Refusing to remove non-template path: $($resolved.Path)"
     }

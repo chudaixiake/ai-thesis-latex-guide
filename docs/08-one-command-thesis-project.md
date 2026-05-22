@@ -18,12 +18,7 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-如果还想同时从本地标准模板生成华理硕士论文格式模板：
-
-```powershell
-cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
-```
+这个命令默认会把 `format\template\ecust-master` 中的完整华理硕士 LaTeX 格式模板复制到 `D:\GraduationThesis\paper\template`。后续正式论文排版以 `paper\template\template.tex` 为准。
 
 如果目标目录已经有文件，并且你明确想覆盖同名骨架文件：
 
@@ -58,6 +53,11 @@ GraduationThesis/
       05-conclusion.tex
     assets/
     template/
+      template.tex
+      bib_template.bib
+      KaiTi/
+      SimHei/
+      SimSun/
   figures/
   data/
     raw/
@@ -85,7 +85,13 @@ GraduationThesis/
 
 ## 使用学校模板格式
 
-如果初始化时没有加 `-WithEcustTemplate`，后续也可以手动生成：
+初始化脚本默认使用项目内置格式源：
+
+```text
+D:\ai-thesis-latex-guide\format\template\ecust-master
+```
+
+如果后续需要重新生成 `paper\template`：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
@@ -99,13 +105,7 @@ cd D:\GraduationThesis\paper\template
 latexmk -xelatex template.tex
 ```
 
-脚本会从本地标准模板目录复制文件，并替换题目、摘要、正文示例、致谢等占位内容，但保留格式相关 LaTeX 结构。
-
-默认本地模板源：
-
-```text
-C:\Users\xiaoy\Desktop\ecust-master-thesis-latex-main
-```
+脚本会从内置标准模板目录复制文件，并替换题目、摘要、正文示例、致谢等占位内容，但保留格式相关 LaTeX 结构、字体文件和参考文献设置。
 
 如果你的标准模板放在其他位置，可以指定：
 

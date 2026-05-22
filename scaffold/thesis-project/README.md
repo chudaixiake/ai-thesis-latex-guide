@@ -20,7 +20,7 @@ scripts/        数据处理和绘图脚本。
 2. 修改 `docs/outline.md`。
 3. 在 Zotero 中建立论文 Collection，并用 Better BibTeX 自动导出到 `docs/references.bib`。
 4. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
-5. 编译 `paper/main.tex`。
+5. 正式排版优先编译 `paper/template/template.tex`。
 
 ## 导出 Word 给导师批注
 
@@ -55,12 +55,14 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-如果使用本地生成的 ECUST 模板：
+正式华理格式模板：
 
 ```powershell
 cd paper\template
 latexmk -xelatex template.tex
 ```
+
+`paper\template` 由初始化脚本从教程仓库的 `format\template\ecust-master` 复制而来。字体、页边距、页眉、标题、目录和参考文献格式属于格式关键部分，不要让 AI 随意修改。
 
 ## 给 Codex / Claude Code 的常用指令
 

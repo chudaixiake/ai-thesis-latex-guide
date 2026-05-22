@@ -14,7 +14,7 @@
 - `paper/` contains LaTeX thesis files.
 - `paper/main.tex` is the thesis entry point.
 - `paper/chapters/` contains chapter files.
-- `paper/template/` may contain a locally generated ECUST thesis LaTeX template.
+- `paper/template/` contains the ECUST master thesis LaTeX format template copied from the guide project.
 - `docs/` contains outlines, notes, proposals, and reference-management files.
 - `docs/references.bib` is the bibliography source exported by Zotero Better BibTeX.
 - `figures/` contains thesis figures and exported charts.
@@ -52,6 +52,8 @@
 ## LaTeX Rules
 
 - Preserve the school template style unless the user explicitly asks to change formatting.
+- Treat `paper/template/template.tex`, `paper/template/KaiTi/`, and `paper/template/SimSun/` as format-critical files. Do not change fonts, margins, headers, title styles, bibliography style, or template structure unless the user explicitly asks for a formatting change.
+- Put thesis content edits in the intended content locations and avoid rewriting format definitions.
 - Use XeLaTeX for Chinese thesis compilation.
 - Put reusable chapter content under `paper/chapters/`.
 - Put figures under `figures/` and reference them with stable relative paths.

@@ -11,7 +11,7 @@
 - 安装 TeX Live、VS Code、LaTeX Workshop、Zotero、Better BibTeX。
 - 安装适合论文写作的 Codex skills。
 - 一键生成类似 `D:\GraduationThesis` 的论文项目目录。
-- 可选生成华理硕士论文格式的 LaTeX 模板目录。
+- 默认生成符合内置华理硕士 LaTeX 格式模板的论文目录。
 - 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定论文流程工作。
 - 管理 Zotero 导出的 `references.bib`。
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
@@ -24,7 +24,7 @@
 ```powershell
 git clone https://github.com/chudaixiake/ai-thesis-latex-guide.git D:\ai-thesis-latex-guide
 cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
 然后进入新项目：
@@ -67,6 +67,11 @@ D:\GraduationThesis
 │  │  └─ 05-conclusion.tex
 │  ├─ assets
 │  └─ template
+│     ├─ template.tex
+│     ├─ bib_template.bib
+│     ├─ KaiTi
+│     ├─ SimHei
+│     └─ SimSun
 ├─ figures
 ├─ data
 │  ├─ raw
@@ -196,19 +201,12 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-如果希望同时从本地标准模板复制华理 LaTeX 格式：
-
-```powershell
-cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
-```
-
 这个命令会：
 
 - 复制 `scaffold/thesis-project/` 到目标目录。
 - 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
 - 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
-- 可选从本地标准模板复制华理硕士论文格式模板到 `paper/template/`。
+- 从 `format/template/ecust-master/` 复制完整华理硕士论文格式模板到 `paper/template/`。
 - 初始化 Git 并提交第一版。
 
 详细说明：
@@ -401,13 +399,14 @@ word-template/ecust-word-format-spec.md
 
 ```text
 docs/          教程文档
+format/        内置华理硕士 LaTeX 格式模板
 scaffold/      可复制的完整论文项目骨架
 scripts/       检查、初始化、模板准备、Word 导出脚本
 template/      原创简化 LaTeX 示例模板
 word-template/ 从华理 LaTeX 模板提取的 Word 格式映射
 ```
 
-`template/ecust-master-thesis/` 是本地生成目录，用于放置华理硕士论文格式模板。它不会提交到本仓库。
+`format/template/ecust-master/` 是初始化脚本默认使用的格式源。生成 `D:\GraduationThesis` 时，脚本会把它完整复制到 `D:\GraduationThesis\paper\template`，论文最终 PDF 应以这个目录里的 `template.tex` 为主入口。
 
 ## 推荐阅读顺序
 

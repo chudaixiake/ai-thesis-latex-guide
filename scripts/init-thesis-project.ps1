@@ -2,7 +2,9 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Destination,
 
+    [string]$TemplateSource = "",
     [switch]$WithEcustTemplate,
+    [switch]$WithoutEcustTemplate,
     [switch]$Force
 )
 
@@ -27,10 +29,15 @@ New-Item -ItemType Directory -Force -Path $dest | Out-Null
 
 Copy-Item -Path (Join-Path $scaffold "*") -Destination $dest -Recurse -Force
 
-if ($WithEcustTemplate) {
+if (-not $WithoutEcustTemplate) {
     $templateDest = Join-Path $dest "paper\template"
     $prepareScript = Join-Path $PSScriptRoot "prepare-ecust-template.ps1"
-    & $prepareScript -Destination $templateDest -Force
+    if ([string]::IsNullOrWhiteSpace($TemplateSource)) {
+        & $prepareScript -Destination $templateDest -Force
+    }
+    else {
+        & $prepareScript -Destination $templateDest -Source $TemplateSource -Force
+    }
 }
 
 Push-Location $dest

@@ -5,8 +5,8 @@
 ## 重要声明
 
 - 本项目不是华东理工大学官方发布页。
-- 本项目内置的 `template/` 是原创教学骨架，不复制学校或第三方模板源码。
-- 如果需要使用华理硕士论文格式模板，请使用 `scripts/prepare-ecust-template.ps1` 在本地生成模板目录。
+- 本项目内置 `format/template/ecust-master/` 作为华理硕士 LaTeX 格式源。
+- 初始化生成 `D:\GraduationThesis` 后，正式论文排版以 `paper/template/template.tex` 为主入口。
 - 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以研究生院、学院和导师发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
 
@@ -74,31 +74,31 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-如果要使用华理硕士论文格式模板，先在本教程项目根目录运行：
+如果要单独重新生成华理硕士论文格式模板，在本教程项目根目录运行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1
+powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 -Destination D:\GraduationThesis\paper\template -Force
 ```
 
 生成目录：
 
 ```text
-template/ecust-master-thesis/
+D:\GraduationThesis\paper\template\
 ```
 
 编译：
 
 ```powershell
-cd template\ecust-master-thesis
+cd D:\GraduationThesis\paper\template
 latexmk -xelatex template.tex
 ```
 
-这个脚本会从本地标准模板目录复制文件，并把示例题目、摘要、正文、致谢等占位内容替换为更通用的论文占位文本；格式相关 LaTeX 结构保持不变。
+这个脚本会从项目内置标准模板目录复制文件，并把示例题目、摘要、正文、致谢等占位内容替换为更通用的论文占位文本；格式相关 LaTeX 结构、字体文件和参考文献设置保持不变。
 
-默认本地模板源：
+默认格式源：
 
 ```text
-C:\Users\xiaoy\Desktop\ecust-master-thesis-latex-main
+D:\ai-thesis-latex-guide\format\template\ecust-master
 ```
 
 参考文献建议使用：
