@@ -18,7 +18,7 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-如果还想同时生成华理硕士论文格式模板：
+如果还想同时从本地标准模板生成华理硕士论文格式模板：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
@@ -99,7 +99,22 @@ cd D:\GraduationThesis\paper\template
 latexmk -xelatex template.tex
 ```
 
-脚本会替换题目、摘要、正文示例、致谢等占位内容，但保留格式相关 LaTeX 结构。
+脚本会从本地标准模板目录复制文件，并替换题目、摘要、正文示例、致谢等占位内容，但保留格式相关 LaTeX 结构。
+
+默认本地模板源：
+
+```text
+C:\Users\xiaoy\Desktop\ecust-master-thesis-latex-main
+```
+
+如果你的标准模板放在其他位置，可以指定：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 `
+  -Source D:\YourTemplateFolder `
+  -Destination D:\GraduationThesis\paper\template `
+  -Force
+```
 
 ## 创建后怎么指挥 Codex 或 Claude Code
 

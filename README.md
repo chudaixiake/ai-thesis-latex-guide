@@ -196,7 +196,7 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-如果希望同时拉取华理 LaTeX 模板格式：
+如果希望同时从本地标准模板复制华理 LaTeX 格式：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
@@ -208,7 +208,7 @@ powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destin
 - 复制 `scaffold/thesis-project/` 到目标目录。
 - 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
 - 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
-- 可选生成华理硕士论文格式模板到 `paper/template/`。
+- 可选从本地标准模板复制华理硕士论文格式模板到 `paper/template/`。
 - 初始化 Git 并提交第一版。
 
 详细说明：

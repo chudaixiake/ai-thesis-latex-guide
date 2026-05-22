@@ -93,7 +93,13 @@ cd template\ecust-master-thesis
 latexmk -xelatex template.tex
 ```
 
-这个脚本会下载上游模板，并把示例题目、摘要、正文、致谢等占位内容替换为更通用的论文占位文本；格式相关 LaTeX 结构保持来自上游模板。
+这个脚本会从本地标准模板目录复制文件，并把示例题目、摘要、正文、致谢等占位内容替换为更通用的论文占位文本；格式相关 LaTeX 结构保持不变。
+
+默认本地模板源：
+
+```text
+C:\Users\xiaoy\Desktop\ecust-master-thesis-latex-main
+```
 
 参考文献建议使用：
 
