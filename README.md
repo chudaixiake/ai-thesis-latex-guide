@@ -54,6 +54,12 @@ latexmk -xelatex template.tex
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis -WithEcustTemplate
 ```
 
+如果已有论文项目，可以用教程仓库里的通用脚本导出 Word 审阅稿：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1 -ProjectRoot D:\GraduationThesis
+```
+
 ## 项目结构
 
 ```text
