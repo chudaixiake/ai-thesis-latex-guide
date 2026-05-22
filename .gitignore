@@ -14,5 +14,7 @@
 *.xdv
 *.pdf
 
+template/ecust-master-thesis/
+
 .DS_Store
 Thumbs.db

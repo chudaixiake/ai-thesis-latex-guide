@@ -8,8 +8,9 @@
 - Codex / Claude Code 辅助写作流程
 - Codex skills 安装与调用流程
 - 一个面向华理硕士论文场景的原创 LaTeX 模板骨架
+- 一键拉取学校模板仓库并改写占位内容的脚本
 
-> 本项目不是华东理工大学官方模板，不代表学校或学院的最终格式要求。模板骨架为原创教学示例，不复制任何学校模板源码。正式提交前请以研究生院、学院和导师给出的最新要求为准。若你基于学校或他人的开源模板改造论文，请遵守对应许可证并保留必要署名。
+> 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。仓库内置 `template/` 是原创教学骨架；如果需要使用与 `blanche07/ecust-master-thesis-latex` 相同格式，请运行本项目提供的拉取脚本生成本地模板。正式提交前请以研究生院、学院和导师给出的最新要求为准。若你基于学校或他人的开源模板改造论文，请遵守对应许可证并保留必要署名。
 
 ## 快速开始
 
@@ -18,12 +19,31 @@
 3. 安装 Zotero 和 Better BibTeX。
 4. 安装论文写作相关 Codex skills。
 5. 用 Zotero 导出 `template/references.bib`。
-6. 根据学院要求修改 `template/main.tex` 中的题目、学院、专业、导师等信息。
-7. 进入模板目录编译：
+6. 如果要使用学校模板仓库的格式，运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1
+```
+
+该命令会生成：
+
+```text
+template/ecust-master-thesis/
+```
+
+7. 根据学院要求修改题目、学院、专业、导师等信息。
+8. 进入模板目录编译：
 
 ```powershell
 cd template
 latexmk -xelatex main.tex
+```
+
+如果使用脚本生成的学校模板格式：
+
+```powershell
+cd template\ecust-master-thesis
+latexmk -xelatex template.tex
 ```
 
 ## 项目结构
@@ -33,6 +53,8 @@ docs/       教程文档
 scripts/    环境检查脚本
 template/   原创 LaTeX 论文模板骨架
 ```
+
+`template/ecust-master-thesis/` 是本地生成目录，不提交到本仓库。它来自 `blanche07/ecust-master-thesis-latex`，用于保持学校模板仓库格式一致。
 
 ## 推荐阅读顺序
 

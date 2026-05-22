@@ -4,8 +4,9 @@
 
 ## 重要声明
 
-- 本项目不是华东理工大学官方模板。
-- 本项目中的 LaTeX 文件是原创教学骨架，不复制学校或第三方模板源码。
+- 本项目不是华东理工大学官方发布页。
+- 本项目内置的 `template/` 是原创教学骨架，不复制学校或第三方模板源码。
+- 如果需要和 `blanche07/ecust-master-thesis-latex` 保持相同格式，请使用 `scripts/prepare-ecust-template.ps1` 在本地生成模板目录。
 - 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以研究生院、学院和导师发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
 
@@ -72,6 +73,27 @@ GraduationThesis/
 cd paper
 latexmk -xelatex main.tex
 ```
+
+如果要使用 `blanche07/ecust-master-thesis-latex` 仓库的格式，先在本教程项目根目录运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1
+```
+
+生成目录：
+
+```text
+template/ecust-master-thesis/
+```
+
+编译：
+
+```powershell
+cd template\ecust-master-thesis
+latexmk -xelatex template.tex
+```
+
+这个脚本会下载上游模板，并把示例题目、摘要、正文、致谢等占位内容替换为更通用的论文占位文本；格式相关 LaTeX 结构保持来自上游模板。
 
 参考文献建议使用：
 
