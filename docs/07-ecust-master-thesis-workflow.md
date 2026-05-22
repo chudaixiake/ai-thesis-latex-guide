@@ -6,7 +6,7 @@
 
 - 本项目不是华东理工大学官方发布页。
 - 本项目内置的 `template/` 是原创教学骨架，不复制学校或第三方模板源码。
-- 如果需要和 `blanche07/ecust-master-thesis-latex` 保持相同格式，请使用 `scripts/prepare-ecust-template.ps1` 在本地生成模板目录。
+- 如果需要使用华理硕士论文格式模板，请使用 `scripts/prepare-ecust-template.ps1` 在本地生成模板目录。
 - 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以研究生院、学院和导师发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
 
@@ -74,7 +74,7 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-如果要使用 `blanche07/ecust-master-thesis-latex` 仓库的格式，先在本教程项目根目录运行：
+如果要使用华理硕士论文格式模板，先在本教程项目根目录运行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1

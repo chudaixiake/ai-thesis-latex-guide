@@ -1,6 +1,6 @@
 # 从 LaTeX 模板提取 Word 格式
 
-本项目提供了一份从 `blanche07/ecust-master-thesis-latex` 模板参数提取出来的 Word 格式映射规格：
+本项目提供了一份从华理硕士论文 LaTeX 格式参数提取出来的 Word 格式映射规格：
 
 ```text
 word-template/ecust-word-format-spec.md

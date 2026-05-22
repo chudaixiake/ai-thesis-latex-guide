@@ -18,7 +18,7 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-如果还想同时拉取 `blanche07/ecust-master-thesis-latex` 的模板格式：
+如果还想同时生成华理硕士论文格式模板：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
@@ -97,12 +97,6 @@ powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 -Des
 ```powershell
 cd D:\GraduationThesis\paper\template
 latexmk -xelatex template.tex
-```
-
-该模板目录来自：
-
-```text
-https://github.com/blanche07/ecust-master-thesis-latex
 ```
 
 脚本会替换题目、摘要、正文示例、致谢等占位内容，但保留格式相关 LaTeX 结构。

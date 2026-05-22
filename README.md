@@ -11,7 +11,7 @@
 - 安装 TeX Live、VS Code、LaTeX Workshop、Zotero、Better BibTeX。
 - 安装适合论文写作的 Codex skills。
 - 一键生成类似 `D:\GraduationThesis` 的论文项目目录。
-- 可选拉取 `blanche07/ecust-master-thesis-latex`，生成同格式 LaTeX 模板目录。
+- 可选生成华理硕士论文格式的 LaTeX 模板目录。
 - 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定论文流程工作。
 - 管理 Zotero 导出的 `references.bib`。
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
@@ -208,7 +208,7 @@ powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destin
 - 复制 `scaffold/thesis-project/` 到目标目录。
 - 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
 - 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
-- 可选拉取 `blanche07/ecust-master-thesis-latex` 到 `paper/template/`。
+- 可选生成华理硕士论文格式模板到 `paper/template/`。
 - 初始化 Git 并提交第一版。
 
 详细说明：
@@ -407,13 +407,7 @@ template/      原创简化 LaTeX 示例模板
 word-template/ 从华理 LaTeX 模板提取的 Word 格式映射
 ```
 
-`template/ecust-master-thesis/` 是本地生成目录，来自：
-
-```text
-https://github.com/blanche07/ecust-master-thesis-latex
-```
-
-它不会提交到本仓库。
+`template/ecust-master-thesis/` 是本地生成目录，用于放置华理硕士论文格式模板。它不会提交到本仓库。
 
 ## 推荐阅读顺序
 

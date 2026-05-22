@@ -14,7 +14,7 @@
 - `paper/` contains LaTeX thesis files.
 - `paper/main.tex` is the thesis entry point.
 - `paper/chapters/` contains chapter files.
-- `paper/template/` may contain a locally generated ECUST template from `blanche07/ecust-master-thesis-latex`.
+- `paper/template/` may contain a locally generated ECUST thesis LaTeX template.
 - `docs/` contains outlines, notes, proposals, and reference-management files.
 - `docs/references.bib` is the bibliography source exported by Zotero Better BibTeX.
 - `figures/` contains thesis figures and exported charts.
