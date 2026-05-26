@@ -1,0 +1,182 @@
+% Main thesis entry point.
+% Based on the ECUST master thesis LaTeX template in paper/template/.
+
+\documentclass[UTF-8,a4paper,twoside]{article}
+
+\usepackage[UTF8,heading=true]{ctex}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\setlist[enumerate]{label=(\arabic*),fullwidth,itemindent=\parindent,listparindent=\parindent,itemsep=0ex,partopsep=0pt,parsep=0ex,nosep}
+\raggedbottom
+\usepackage{layout}
+\usepackage{geometry}
+\usepackage{graphicx}
+\graphicspath{{../figures/}{template/}}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
+\addbibresource{../docs/references.bib}
+\renewcommand{\bibfont}{\zihao{-4}}
+\setlength{\bibitemsep}{0pt}
+\usepackage{mfirstuc}
+\gMFUnocap{in}
+\gMFUnocap{of}
+\gMFUnocap{and}
+\gMFUnocap{for}
+\gMFUnocap{the}
+\gMFUnocap{th}
+\gMFUnocap{on}
+\DeclareFieldFormat[article]{journaltitle}{\capitalisewords{#1}}
+\DeclareFieldFormat[inproceedings]{booktitle}{\capitalisewords{#1}}
+\usepackage{hyperref}
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    allcolors=black,
+    pdfstartview=Fit,
+    breaklinks=true,
+    linktoc=all,  % 让目录中的链接也生效
+    bookmarksnumbered=true,  % 在书签中显示章节编号
+    bookmarksopen=true,      % 展开书签
+    pdfencoding=auto
+}
+
+% 设置章节编号格式 - 移除 \thechapter
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+\AtBeginDocument{
+\setlength{\abovedisplayskip}{1ex}
+\setlength{\belowdisplayskip}{1ex}
+}
+
+\usepackage{fontspec}
+\usepackage{amsmath,lmodern}
+\usepackage{xeCJK}
+\usepackage{titletoc}
+\usepackage{bm}
+\usepackage{booktabs}
+
+\newcommand{\topline}{\toprule[1.5pt]}
+\newcommand{\bottomline}{\bottomrule[1.5pt]}
+\renewcommand{\contentsname}{\zihao{4}\bfseries{目录}}
+
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+\renewcommand{\theequation}{\thesection-\arabic{equation}}  % 这里也修改了
+\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.0cm,headheight=2.0cm,footskip=1.2cm}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun.ttc}[AutoFakeBold=true, Path=template/SimSun/, Extension=.ttc]
+\let\kaishu\relax
+\newCJKfontfamily\kaishu{SimKai.ttf}[AutoFakeBold=true, Path=template/KaiTi/, Extension=.ttf]
+
+% 修改 ctexset，移除 name={第,章}
+\ctexset{
+	section={
+	format=\heiti\zihao{4}\centering,
+	beforeskip=3ex,
+	afterskip=3ex
+	},
+	subsection={
+	format=\bfseries\zihao{-4},
+	beforeskip=0.6em,
+	afterskip=0.6em
+	},
+	subsubsection={
+	format=\zihao{-4},
+	beforeskip=0ex,
+	afterskip=0ex
+	}
+}
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{2em}
+
+\fancypagestyle{main}{
+\fancyhf{}
+\linespread{1.4375}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[RO,LE]{\zihao{-4}{第}\thepage{页}}
+}
+
+\fancypagestyle{pre}{
+\fancyhf{}
+\linespread{1.4375}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[RO,LE]{\zihao{-4}{第}\Roman{page}{页}}
+}
+
+\begin{document}
+
+\pagestyle{pre}
+\thispagestyle{pre}
+
+\begin{center}
+	\heiti\zihao{4}CANDU 压力管缺陷 LBB 评价方法研究
+\end{center}
+\vspace{\baselineskip}
+\begin{center}
+	\zihao{4}\bfseries{摘要}
+\end{center}
+
+\zihao{-4}
+这里填写中文摘要。摘要应概括研究背景、研究方法、主要结果和结论。
+
+\noindent\zihao{-4}{\bfseries 关键词：}关键词一；关键词二；关键词三
+
+\newpage
+\begin{center}
+	\zihao{4}\bfseries Thesis Title in English
+\end{center}
+\vspace{\baselineskip}
+\begin{center}
+	\zihao{4}\bfseries{Abstract}
+\end{center}
+
+\zihao{-4}
+Write the English abstract here.
+
+\noindent\zihao{-4}{\bfseries Keywords \ \ }keyword one; keyword two; keyword three
+
+\newpage
+\thispagestyle{pre}
+\begin{center}
+	\tableofcontents
+\end{center}
+\thispagestyle{pre}
+
+\newpage
+\pagestyle{main}
+\setcounter{page}{1}
+
+% 注意：在你的章节文件中，使用 \section{绪论} 而不是 \chapter{绪论}
+\input{chapters/01-introduction}
+\newpage
+\input{chapters/02-literature}
+\newpage
+\input{chapters/03-method}
+\newpage
+\input{chapters/04-analysis}
+\newpage
+\input{chapters/05-uncertainty}
+\newpage
+\input{chapters/06-conclusion}
+
+\newpage
+\addcontentsline{toc}{section}{参考文献}
+\defbibheading{bibliography}[\bibname]{\section*{#1}\bfseries\zihao{4}\heiti\normalfont}
+\printbibliography[heading=bibliography,title=参考文献]
+
+\newpage
+\addcontentsline{toc}{section}{致谢}
+\begin{center}
+	\zihao{4}\bfseries{致谢}
+\end{center}
+\vspace{\baselineskip}
+
+\zihao{-4}{这里填写致谢内容11111。}
+
+\end{document}
