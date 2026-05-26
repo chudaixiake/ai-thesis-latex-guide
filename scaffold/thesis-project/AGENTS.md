@@ -1,21 +1,21 @@
-# Graduation Thesis Instructions
+# Academic Writing Project Instructions
 
 ## Project Scope
 
-- This repository is for a thesis project (master's or doctoral, any school).
-- Main writing language: Chinese.
-- Writing style: formal, clear, restrained, and suitable for academic thesis.
-- Do not invent references, datasets, experimental results, page numbers, DOI values, or institutional requirements.
+- This repository is for an academic writing project (thesis, journal paper, conference paper, or any LaTeX document — any school or journal).
+- Main writing language: Chinese (or English, configurable).
+- Writing style: formal, clear, restrained, and suitable for academic writing.
+- Do not invent references, datasets, experimental results, page numbers, DOI values, or formatting requirements.
 - When source support is missing, mark the gap explicitly instead of filling it with plausible text.
-- The default template in `paper/template/` is based on ECUST master thesis format. **To use another school's template, just tell Codex/Claude Code and it will adapt.**
-- Final formatting must follow the latest school, college, and supervisor requirements.
+- The default template in `paper/template/` is based on ECUST master thesis format as a **placeholder example**. **After the project skeleton is generated, provide your actual school or journal LaTeX template to Codex/Claude Code and it will adapt.**
+- Final formatting must follow the latest requirements from your target (school graduate office / journal editorial).
 
 ## Repository Layout
 
-- `paper/` contains LaTeX thesis files.
-- `paper/main.tex` is the thesis entry point.
-- `paper/chapters/` contains chapter files.
-- `paper/template/` contains the thesis LaTeX format template (default: ECUST master; replaceable by telling Codex).
+- `paper/` contains LaTeX files.
+- `paper/main.tex` is the document entry point.
+- `paper/chapters/` contains chapter or section files.
+- `paper/template/` contains the LaTeX format template (default: ECUST master as placeholder; replaceable after skeleton generation by telling Codex).
 - `docs/` contains outlines, notes, proposals, and reference-management files.
 - `docs/references.bib` is the bibliography source exported by Zotero Better BibTeX.
 - `docs/notes/` contains literature reading notes. Use `docs/notes/literature-note-template.md` as the template for each paper.
@@ -27,7 +27,7 @@
 
 ## AI Skills Protocol
 
-- Before handling thesis writing, literature review, citation, polishing, figure, data, review, or defense-PPT tasks, read and follow `docs/ai-skills-workflow.md`.
+- Before handling academic writing, literature review, citation, polishing, figure, data, review, or presentation tasks, read and follow `docs/ai-skills-workflow.md`.
 - Choose skills by task stage:
   - Research planning and literature discovery: `deep-research`, `academic-paper`, `nature-academic-search`.
   - Paper reading and note extraction: `nature-reader`. Save each paper's notes as `docs/notes/{citation-key}.md` using the template in `docs/notes/literature-note-template.md`.
@@ -36,29 +36,29 @@
   - Data analysis and result interpretation: `nature-data`.
   - Figure design and captions: `nature-figure`.
   - Academic polishing: `nature-polishing`, `awesome-ai-research-writing`, `humanizer`.
-  - Thesis review and revision planning: `academic-paper-reviewer`, `nature-response`.
-  - Defense slides: `nature-paper2ppt`.
+  - Document review and revision planning: `academic-paper-reviewer`, `nature-response`.
+  - Presentation slides: `nature-paper2ppt`.
 - If multiple skills apply, use the smallest set that covers the task and state which skills are being used.
 - If a named skill is unavailable in the current Codex session, say so and continue with the closest available workflow from `docs/ai-skills-workflow.md`.
-- Do not bypass the workflow document for major thesis tasks unless the user explicitly asks for a one-off answer.
+- Do not bypass the workflow document for major writing tasks unless the user explicitly asks for a one-off answer.
 
 ## Writing Workflow
 
-- Start from `docs/thesis-config.md` and `docs/outline.md` before drafting full chapters.
-- Draft and revise one chapter or section at a time.
+- Start from `docs/thesis-config.md` and `docs/outline.md` before drafting full content.
+- Draft and revise one section at a time.
 - Keep claim-evidence links explicit: each important claim should have a citation, result, or user-provided source.
 - Prefer concise paragraphs with clear topic sentences.
-- Keep terminology consistent across all chapters.
+- Keep terminology consistent across the entire document.
 - Use `docs/literature-matrix.md` to track all papers at a glance; keep detailed notes per paper in `docs/notes/{citation-key}.md` using the template `docs/notes/literature-note-template.md`.
 - When writing the literature review, consult the notes in `docs/notes/` and the matrix in `docs/literature-matrix.md`.
-- For supervisor Word comments, follow `docs/word-review-workflow.md`: export Word files to `docs/export/`, store returned annotated files in `docs/review/`, summarize comments into a revision roadmap, then apply changes back to LaTeX.
+- For reviewer/supervisor Word comments, follow `docs/word-review-workflow.md`: export Word files to `docs/export/`, store returned annotated files in `docs/review/`, summarize comments into a revision roadmap, then apply changes back to LaTeX.
 
 ## LaTeX Rules
 
-- Preserve the school template style unless the user explicitly asks to change formatting.
-- Treat `paper/template/template.tex`, `paper/template/KaiTi/`, and `paper/template/SimSun/` as format-critical files. Do not change fonts, margins, headers, title styles, bibliography style, or template structure unless the user explicitly asks for a formatting change.
-- Put thesis content edits in the intended content locations and avoid rewriting format definitions.
-- Use XeLaTeX for Chinese thesis compilation.
+- Preserve the current template style unless the user explicitly asks to change formatting (or provides a new template).
+- Treat `paper/template/template.tex` and its associated assets (fonts, style files) as format-critical files. Do not change fonts, margins, headers, title styles, bibliography style, or template structure unless the user explicitly asks for a formatting change.
+- Put content edits in the intended content locations and avoid rewriting format definitions.
+- Use XeLaTeX for Chinese document compilation.
 - Put reusable chapter content under `paper/chapters/`.
 - Put figures under `figures/` and reference them with stable relative paths.
 - After meaningful LaTeX edits, compile or at least run a syntax-oriented check when local tools are available.

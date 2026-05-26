@@ -31,7 +31,7 @@ references
 3. 保存路径选择论文项目的 `docs\` 文件夹
 4. 文件名设为 `references.bib`
 
-此时 `D:\GraduationThesis\docs\` 目录下会生成一个 `references.bib` 文件——这就是 LaTeX 引用参考文献的数据源。
+此时 `D:\MyPaper\docs\` 目录下会生成一个 `references.bib` 文件——这就是 LaTeX 引用参考文献的数据源。
 
 ---
 
@@ -66,7 +66,7 @@ Zotero 新建 references 分类
         ↓
   右键 → 导出分类 → Better BibLaTeX → 勾选"保持更新"
         ↓
-  保存为 D:\GraduationThesis\docs\references.bib
+  保存为 D:\MyPaper\docs\references.bib
         ↓
   之后每新增一篇文献 → .bib 自动更新
         ↓

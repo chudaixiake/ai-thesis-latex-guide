@@ -17,10 +17,10 @@
 在 Zotero 中建立专用 Collection：
 
 ```text
-GraduationThesis
+references
 ```
 
-将需要精读的论文放入该 Collection，确保每篇文献都有：
+将需要精读的文献放入该 Collection，确保每篇文献都有：
 
 - 完整的题录信息（标题、作者、年份、期刊、DOI）
 - 对应的 PDF 附件
@@ -73,10 +73,10 @@ AI 会基于 PDF 内容自动提取并填充上述字段。
 
 ### 3.1 笔记存放位置
 
-笔记统一存放在论文项目的 `docs/notes/` 目录下：
+笔记统一存放在学术写作项目的 `docs/notes/` 目录下：
 
 ```text
-GraduationThesis/
+MyPaper/
   docs/
     notes/
       literature-note-template.md    ← 笔记模板
@@ -181,7 +181,7 @@ Codex 会自动定位问题并修复。
 ### 批量整理多篇文献
 
 ```text
-我已经在 Zotero 的 GraduationThesis Collection 中新增了以下文献：
+我已经在 Zotero 的 references Collection 中新增了以下文献：
 - {citation-key-1}
 - {citation-key-2}
 - {citation-key-3}

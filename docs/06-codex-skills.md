@@ -1,6 +1,6 @@
 # 安装和使用 Codex Skills
 
-Codex skills 是给 Codex 的任务说明包。写毕业论文时，可以把文献检索、章节写作、引用检查、润色、审稿和答辩 PPT 分给不同 skills 处理。
+Codex skills 是给 Codex 的任务说明包。写学术论文时，可以把文献检索、章节写作、引用检查、润色、审稿和答辩/汇报 PPT 分给不同 skills 处理。
 
 ## 适合论文写作的 skills
 

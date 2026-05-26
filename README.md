@@ -1,18 +1,18 @@
-# AI Thesis LaTeX Guide
+# AI Academic Writing LaTeX Guide
 
-面向**通用学位论文写作**的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理导师 Word 批注。
+面向**通用学术写作**的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理审稿人/导师批注。
 
-> 本项目不是任何学校或机构的官方发布页。内置默认模板基于华东理工大学硕士论文格式，但你可以随时换成其他学校的模板——只需告诉 Codex / Claude Code 即可。正式提交前请以你所在学校研究生院、学院和导师给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
+> 本项目不是任何学校或机构的官方发布页。内置默认模板基于华东理工大学硕士论文格式作为示例，但你可以使用**任何学校学位论文或期刊的 LaTeX 模板**——只需把模板文件给 Codex / Claude Code，它会在生成项目骨架后自动适配。正式提交前请以目标（学校研究生院 / 期刊编辑部）给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
 
 ## 这个项目解决什么
 
-它把从零开始写学位论文需要配置的内容整理成一套可复制流程：
+它把从零开始写学术论文需要配置的内容整理成一套可复制流程：
 
 - 安装 TeX Live、VS Code、LaTeX Workshop、Zotero、Better BibTeX。
-- 安装适合论文写作的 Codex skills。
-- 一键生成类似 `D:\GraduationThesis` 的论文项目目录。
-- 默认生成符合内置 LaTeX 格式模板（ECUST 硕士论文示例）的论文目录；**想用其他学校模板？告诉 Codex 即可自动切换。**
-- 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定论文流程工作。
+- 安装适合学术写作的 Codex skills。
+- 一键生成类似 `D:\MyPaper` 的学术写作项目目录。
+- 默认生成符合内置 LaTeX 格式模板（ECUST 硕士论文示例）的项目骨架；**想用其他模板（学校论文 / 期刊投稿）？把 LaTeX 模板给 Codex，它在生成项目结构后自动适配。**
+- 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定流程工作。
 - 管理 Zotero 导出的 `references.bib`。
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
 - 从默认 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
@@ -24,13 +24,13 @@
 ```powershell
 git clone https://github.com/chudaixiake/ai-thesis-latex-guide.git D:\ai-thesis-latex-guide
 cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\MyPaper
 ```
 
 然后进入新项目：
 
 ```powershell
-cd D:\GraduationThesis
+cd D:\MyPaper
 ```
 
 让 Codex 或 Claude Code 开始：
@@ -39,12 +39,12 @@ cd D:\GraduationThesis
 请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
 ```
 
-## 最终生成的论文项目
+## 最终生成的项目
 
 运行本项目的初始化脚本后，会生成类似：
 
 ```text
-D:\GraduationThesis
+D:\MyPaper
 ├─ AGENTS.md
 ├─ README.md
 ├─ docs
@@ -132,7 +132,7 @@ kpsewhich
 D:\texlive\2026\bin\windows
 ```
 
-## 第 2 步：安装论文写作 skills
+## 第 2 步：安装学术写作 skills
 
 推荐安装并使用这些 skills。
 
@@ -192,13 +192,13 @@ python "$env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-s
 
 [安装和使用 Codex Skills](docs/06-codex-skills.md)
 
-## 第 3 步：一键创建论文项目
+## 第 3 步：一键创建学术写作项目
 
 在本教程仓库根目录运行：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
+powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\MyPaper
 ```
 
 这个命令会：
@@ -206,8 +206,20 @@ powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destin
 - 复制 `scaffold/thesis-project/` 到目标目录。
 - 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
 - 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
-- 从 `format/template/ecust-master/` 复制完整格式模板（默认为 ECUST 硕士论文）到 `paper/template/`。**如需使用其他学校模板，在初始化后对 Codex 说"我要使用 XX 学校的模板"即可。**
+- 从 `format/template/ecust-master/` 复制默认格式模板（ECUST 硕士论文示例）到 `paper/template/`。**这只是初始占位——接下来你可以替换为任何学校或期刊的模板。**
 - 初始化 Git 并提交第一版。
+
+### 替换为你自己的模板（生成骨架之后）
+
+项目骨架生成完成后，把你目标学校或期刊的 LaTeX 模板交给 Codex：
+
+```text
+我要使用 [XX大学硕士论文 / XX期刊] 的 LaTeX 模板，
+模板文件在 [路径]，请帮我调整 paper/template/ 下的文件以匹配该模板格式，
+并确保 main.tex 正确引用该模板。
+```
+
+Codex 会自动完成模板适配，无需手动修改大量配置。
 
 详细说明：
 
@@ -218,7 +230,7 @@ powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destin
 在 Zotero 中新建 Collection：
 
 ```text
-GraduationThesis
+MyPaper
 ```
 
 右键导出：
@@ -242,7 +254,7 @@ Keep updated
 保存到：
 
 ```text
-D:\GraduationThesis\docs\references.bib
+D:\MyPaper\docs\references.bib
 ```
 
 LaTeX 中引用：
@@ -253,7 +265,7 @@ LaTeX 中引用：
 
 ## 第 5 步：让 Codex 或 Claude Code 开始干活
 
-进入生成后的论文项目，先让 AI 读取规则：
+进入生成后的项目，先让 AI 读取规则：
 
 ```text
 请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
@@ -297,14 +309,14 @@ LaTeX 中引用：
 简化模板：
 
 ```powershell
-cd D:\GraduationThesis\paper
+cd D:\MyPaper\paper
 latexmk -xelatex main.tex
 ```
 
 如果使用 `paper/template/` 中的默认模板：
 
 ```powershell
-cd D:\GraduationThesis\paper\template
+cd D:\MyPaper\paper\template
 latexmk -xelatex template.tex
 ```
 
@@ -326,7 +338,7 @@ Word：给导师批注文字
 导出 Word 审阅稿：
 
 ```powershell
-cd D:\GraduationThesis
+cd D:\MyPaper
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 ```
 
@@ -334,13 +346,13 @@ powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 
 ```powershell
 cd D:\ai-thesis-latex-guide
-powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1 -ProjectRoot D:\GraduationThesis
+powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1 -ProjectRoot D:\MyPaper
 ```
 
 默认输出：
 
 ```text
-D:\GraduationThesis\docs\export\review-draft.docx
+D:\MyPaper\docs\export\review-draft.docx
 ```
 
 建议同时给导师：
@@ -399,14 +411,14 @@ word-template/ecust-word-format-spec.md
 
 ```text
 docs/          教程文档
-format/        内置默认 LaTeX 格式模板（ECUST 硕士论文）
-scaffold/      可复制的完整论文项目骨架
+format/        内置默认 LaTeX 格式模板（ECUST 硕士论文，作为示例）
+scaffold/      可复制的完整学术写作项目骨架
 scripts/       检查、初始化、模板准备、Word 导出脚本
 template/      原创简化 LaTeX 示例模板
 word-template/ 从 LaTeX 模板提取的 Word 格式映射
 ```
 
-`format/template/ecust-master/` 是初始化脚本默认使用的格式源。生成 `D:\GraduationThesis` 时，脚本会把它完整复制到 `D:\GraduationThesis\paper\template`，论文最终 PDF 应以这个目录里的 `template.tex` 为主入口。
+`format/template/ecust-master/` 是初始化脚本默认使用的格式源（作为占位示例）。生成 `D:\MyPaper` 时，脚本会把它复制到 `D:\MyPaper\paper\template`。**接下来你应该替换为自己实际的学校或期刊模板。**
 
 ## 推荐阅读顺序
 

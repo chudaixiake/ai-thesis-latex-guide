@@ -1,8 +1,8 @@
-# Thesis Project
+# Academic Writing Project
 
-这是一个面向通用学位论文写作的项目骨架，用于配合 Codex 或 Claude Code 完成论文写作、文献管理、LaTeX 编译和版本管理。
+这是一个面向**通用学术写作**的项目骨架，用于配合 Codex 或 Claude Code 完成论文/文章写作、文献管理、LaTeX 编译和版本管理。适用于学位论文、期刊论文、会议论文或任何 LaTeX 文档。
 
-> **内置默认模板基于华东理工大学硕士论文格式。如需使用其他学校模板，告诉 Codex 即可自动切换。**
+> **内置默认模板基于华东理工大学硕士论文格式（仅作为初始化占位示例）。生成项目骨架后，把你的学校或期刊 LaTeX 模板交给 Codex 即可自动适配。**
 
 ## 目录
 
@@ -10,21 +10,32 @@
 data/
   raw/          原始数据，不直接修改。
   processed/    清洗或处理后的数据。
-docs/           论文配置、大纲、笔记、参考文献。
-figures/        论文图片和导出图表。
+docs/           配置、大纲、笔记、参考文献。
+figures/        图片和导出图表。
 paper/          LaTeX 主项目。
 scripts/        数据处理和绘图脚本。
 ```
 
 ## 第一次使用
 
-1. 填写 `docs/thesis-config.md`。
-2. 修改 `docs/outline.md`。
-3. 在 Zotero 中建立论文 Collection，并用 Better BibTeX 自动导出到 `docs/references.bib`。
-4. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
-5. 正式排版优先编译 `paper/template/template.tex`。
+1. 填写 `docs/thesis-config.md`（题目、目标、研究问题、方法等）。
+2. **替换模板**：把你目标学校或期刊的 LaTeX 模板给 Codex，让它适配 `paper/template/`。
+3. 修改 `docs/outline.md`。
+4. 在 Zotero 中建立文献 Collection，并用 Better BibTeX 自动导出到 `docs/references.bib`。
+5. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
+6. 正式排版优先编译 `paper/template/template.tex`。
 
-## 导出 Word 给导师批注
+## 替换模板（生成骨架之后）
+
+项目骨架已生成后，这是最关键的一步：
+
+```text
+我要使用 [XX大学学位论文 / XX期刊] 的 LaTeX 模板，
+模板文件在 [路径]，请帮我调整 paper/template/ 以匹配该模板格式，
+并确保 main.tex 正确引用该模板。
+```
+
+## 导出 Word 给审稿人批注
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
@@ -36,7 +47,7 @@ powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 docs/export/review-draft.docx
 ```
 
-导师返回的批注版 Word 放到：
+返回的批注版 Word 放到：
 
 ```text
 docs/review/
@@ -50,6 +61,8 @@ Word 审阅稿格式可参考：
 word/ecust-word-format-spec.md
 ```
 
+> 换了新模板后，可以让 Codex 根据你的实际模板重新提取 Word 格式映射。
+
 ## 常用命令
 
 ```powershell
@@ -57,19 +70,19 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-正式格式模板（默认为 ECUST 硕士论文，可替换）：
+正式格式模板：
 
 ```powershell
 cd paper\template
 latexmk -xelatex template.tex
 ```
 
-`paper\template` 由初始化脚本从教程仓库的 `format\template\ecust-master` 复制而来。**这是默认模板；想用别的学校的模板？对 Codex 说"我要使用 XX 学校的模板"即可。** 字体、页边距、页眉、标题、目录和参考文献格式属于格式关键部分，不要让 AI 随意修改。
+`paper\template` 由初始化脚本从教程仓库复制而来作为占位。**请替换为你自己的实际模板。** 字体、页边距、页眉、标题、目录和参考文献格式属于格式关键部分，不要让 AI 随意修改。
 
 ## 给 Codex / Claude Code 的常用指令
 
 ```text
-根据 docs/thesis-config.md 和 docs/outline.md，帮我细化论文大纲。
+根据 docs/thesis-config.md 和 docs/outline.md，帮我细化大纲。
 ```
 
 ```text
