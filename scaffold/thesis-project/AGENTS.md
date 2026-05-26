@@ -17,6 +17,8 @@
 - `paper/template/` contains the ECUST master thesis LaTeX format template copied from the guide project.
 - `docs/` contains outlines, notes, proposals, and reference-management files.
 - `docs/references.bib` is the bibliography source exported by Zotero Better BibTeX.
+- `docs/notes/` contains literature reading notes. Use `docs/notes/literature-note-template.md` as the template for each paper.
+- `docs/literature-matrix.md` provides a birds-eye view of all papers read.
 - `figures/` contains thesis figures and exported charts.
 - `data/raw/` contains original data and should not be modified directly.
 - `data/processed/` contains cleaned or derived data.
@@ -27,7 +29,7 @@
 - Before handling thesis writing, literature review, citation, polishing, figure, data, review, or defense-PPT tasks, read and follow `docs/ai-skills-workflow.md`.
 - Choose skills by task stage:
   - Research planning and literature discovery: `deep-research`, `academic-paper`, `nature-academic-search`.
-  - Paper reading and note extraction: `nature-reader`.
+  - Paper reading and note extraction: `nature-reader`. Save each paper's notes as `docs/notes/{citation-key}.md` using the template in `docs/notes/literature-note-template.md`.
   - Chapter drafting: `academic-paper`, `nature-writing`, `awesome-ai-research-writing`.
   - Citation and bibliography checks: `nature-citation`.
   - Data analysis and result interpretation: `nature-data`.
@@ -46,7 +48,8 @@
 - Keep claim-evidence links explicit: each important claim should have a citation, result, or user-provided source.
 - Prefer concise paragraphs with clear topic sentences.
 - Keep terminology consistent across all chapters.
-- Use `docs/literature-matrix.md` or a spreadsheet to track papers before writing the literature review.
+- Use `docs/literature-matrix.md` to track all papers at a glance; keep detailed notes per paper in `docs/notes/{citation-key}.md` using the template `docs/notes/literature-note-template.md`.
+- When writing the literature review, consult the notes in `docs/notes/` and the matrix in `docs/literature-matrix.md`.
 - For supervisor Word comments, follow `docs/word-review-workflow.md`: export Word files to `docs/export/`, store returned annotated files in `docs/review/`, summarize comments into a revision roadmap, then apply changes back to LaTeX.
 
 ## LaTeX Rules

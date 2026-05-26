@@ -10,7 +10,7 @@
 - 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以研究生院、学院和导师发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
 
-## 推荐目录
+## 论文项目推荐目录
 
 ```text
 GraduationThesis/
@@ -22,6 +22,14 @@ GraduationThesis/
     literature-matrix.md
     references.bib
     ai-skills-workflow.md
+    word-review-workflow.md
+    notes/
+      literature-note-template.md
+      {citation-key-1}.md
+      {citation-key-2}.md
+      ...
+    export/
+    review/
   paper/
     main.tex
     chapters/
@@ -30,6 +38,7 @@ GraduationThesis/
       03-method.tex
       04-analysis.tex
       05-conclusion.tex
+    template/
   figures/
   data/
     raw/
@@ -37,9 +46,9 @@ GraduationThesis/
   scripts/
 ```
 
-## 华理硕士论文常见内容块
-
 不同学院可能有细节差异，但通常需要准备：
+
+## 华理硕士论文常见内容块
 
 - 中文题名
 - 英文题名
@@ -141,6 +150,36 @@ LaTeX 中引用：
 ```latex
 已有研究指出……\cite{sample2024}。
 ```
+
+## 文献笔记组织
+
+建议为每篇精读论文建立独立笔记，统一存放在 `docs/notes/` 目录下。
+
+**笔记模板：** `docs/notes/literature-note-template.md` 包含以下模块：
+- 基本信息（标题、作者、年份、DOI、Zotero 链接等）
+- 研究问题概括
+- 方法与数据梳理
+- 主要结论提取
+- 可引用观点（含原文位置和改写草稿）
+- 重要公式 / 模型 / 判据
+- 与其它文献的关系
+- 待办 / 疑问
+
+**推荐流程：**
+
+1. 用 `nature-reader` 阅读论文，按模板生成笔记
+2. 笔记文件命名为 `docs/notes/{citation-key}.md`
+3. 在 `docs/literature-matrix.md` 中新增一行，记录该文献的关键信息
+
+**示例 prompt：**
+
+```text
+使用 nature-reader，阅读这篇论文，按 docs/notes/literature-note-template.md 的模板整理笔记，
+保存为 docs/notes/{citation-key}.md。
+同时更新 docs/literature-matrix.md 中对应行。
+```
+
+这个流程确保每篇文献都有结构化笔记，写文献综述时可以直接查阅和引用。
 
 ## Codex / Claude Code 使用方式
 

@@ -137,7 +137,9 @@ nature-writing
 ### 2. 文献阅读
 
 ```text
-使用 nature-reader，阅读这篇论文，并按研究问题、方法、数据、结论、可引用位置整理成笔记。
+使用 nature-reader，阅读这篇论文，按 docs/notes/literature-note-template.md 的模板整理笔记，
+保存为 docs/notes/{citation-key}.md。
+同时更新 docs/literature-matrix.md 中对应行。
 ```
 
 ### 3. 章节写作
