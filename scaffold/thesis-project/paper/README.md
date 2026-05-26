@@ -2,7 +2,7 @@
 
 - `main.tex`: simplified project entry point.
 - `chapters/`: chapter files included by `main.tex`.
-- `template/`: optional ECUST template generated from the upstream repository.
+- `template/`: optional template generated from the upstream repository (default: ECUST master thesis; replaceable).
 - `assets/`: local thesis assets.
 
 Compile:

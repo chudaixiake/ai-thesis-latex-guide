@@ -1,14 +1,24 @@
-# 华理硕士论文项目建议
+# AI 辅助论文写作项目指南
 
-本文档面向华东理工大学硕士学位论文写作场景，说明如何把 LaTeX、Zotero 和 AI 辅助写作放到一个可维护的项目里。
+本文档说明如何把 LaTeX、Zotero 和 AI 辅助写作（Codex / Claude Code）放到一个可维护的项目里，形成完整的论文写作工作流。
+
+**本项目是通用写作流程指南，不绑定任何特定学校的模板。** 内置默认模板基于华东理工大学硕士论文格式，但你可以随时换成其他模板——只需要告诉 Codex / Claude Code 即可。
 
 ## 重要声明
 
-- 本项目不是华东理工大学官方发布页。
-- 本项目内置 `format/template/ecust-master/` 作为华理硕士 LaTeX 格式源。
-- 初始化生成 `D:\GraduationThesis` 后，正式论文排版以 `paper/template/template.tex` 为主入口。
-- 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以研究生院、学院和导师发布的最新文件为准。
+- 本项目不是任何学校官方发布的论文格式包。
+- 本项目内置 `format/template/ecust-master/` 作为 **默认 LaTeX 格式示例**（华东理工大学硕士论文）。
+- 初始化生成项目后，正式论文排版以 `paper/template/template.tex` 为主入口。
+- 页面格式、封面、扉页、页眉、目录、参考文献等最终要求，应以你所在学校研究生院、学院和导师发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
+- **想用别的学校的模板？直接告诉 Codex 就行：**
+
+```text
+我要使用 XX大学 的硕士论文 LaTeX 模板，
+请帮我调整 paper/template/ 下的文件以匹配该模板的格式要求。
+```
+
+---
 
 ## 论文项目推荐目录
 
@@ -46,9 +56,9 @@ GraduationThesis/
   scripts/
 ```
 
-不同学院可能有细节差异，但通常需要准备：
+不同学校、学位类型的内容块可能不同，但通常需要准备：
 
-## 华理硕士论文常见内容块
+## 论文常见内容块
 
 - 中文题名
 - 英文题名
@@ -60,7 +70,9 @@ GraduationThesis/
 - 正文章节
 - 参考文献
 - 致谢
-- 附录或攻读学位期间成果，按学院要求添加
+- 附录或攻读学位期间成果（按学校要求添加）
+
+> 以上内容块因学校而异。如果你的学校有特殊要求（如不需要英文题名、或需要额外的"创新点"章节），告诉 Codex 即可自动适配。
 
 ## 推荐章节骨架
 
@@ -72,18 +84,20 @@ GraduationThesis/
 第 5 章 总结与展望
 ```
 
-如果你的专业是工程、计算机、控制、材料、化工、经管等方向，章节名称可以按研究对象调整，但建议保持“背景 -> 文献 -> 方法 -> 结果 -> 总结”的逻辑。
+如果你的专业是工程、计算机、控制、材料、化工、经管等方向，章节名称可以按研究对象调整，但建议保持"背景 -> 文献 -> 方法 -> 结果 -> 总结"的逻辑。
 
 ## LaTeX 编译建议
 
-华理中文硕士论文建议使用 XeLaTeX：
+中文论文建议使用 XeLaTeX：
 
 ```powershell
 cd paper
 latexmk -xelatex main.tex
 ```
 
-如果要单独重新生成华理硕士论文格式模板，在本教程项目根目录运行：
+### 使用默认模板（ECUST 硕士）
+
+如果要生成默认的 ECUST 硕士论文格式模板，在本教程项目根目录运行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 -Destination D:\GraduationThesis\paper\template -Force
@@ -110,10 +124,31 @@ latexmk -xelatex template.tex
 D:\ai-thesis-latex-guide\format\template\ecust-master
 ```
 
-参考文献建议使用：
+### 切换到其他学校的模板
+
+如果你想用自己的学校模板，只需对 Codex 说：
+
+```text
+我使用的是 XX大学 的 XX 学位论文 LaTeX 模板，
+模板文件在 [路径]。
+请帮我将 paper/template/ 调整为匹配该模板的格式，
+并确保 main.tex 正确引用该模板。
+```
+
+Codex 会自动处理模板切换，无需手动修改大量配置。
+
+### 参考文献设置
+
+中文论文推荐引用格式：
 
 ```latex
 \usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
+```
+
+如果学校要求其他引用格式（如 APA、IEEE），同样告诉 Codex：
+
+```text
+我的学校要求使用 APA 引用格式，请修改 biblatex 设置。
 ```
 
 手动编译顺序：
@@ -130,7 +165,7 @@ xelatex main.tex
 在 Zotero 中建立专用 Collection：
 
 ```text
-GraduationThesis
+references
 ```
 
 用 Better BibTeX 自动导出为：
@@ -138,6 +173,8 @@ GraduationThesis
 ```text
 docs/references.bib
 ```
+
+详细步骤参见 [12-zotero-auto-update-bib](./12-zotero-auto-update-bib.md)。
 
 LaTeX 中引用：
 
@@ -179,7 +216,7 @@ LaTeX 中引用：
 同时更新 docs/literature-matrix.md 中对应行。
 ```
 
-这个流程确保每篇文献都有结构化笔记，写文献综述时可以直接查阅和引用。
+这个流程确保每篇文献都有结构化笔记，写文献综述时可以直接查阅和引用。详细流程参见 [11-literature-notes-workflow](./11-literature-notes-workflow.md)。
 
 ## Codex / Claude Code 使用方式
 
@@ -197,7 +234,7 @@ LaTeX 中引用：
 
 ```text
 使用 academic-paper 和 nature-writing，直接修改 paper/chapters/01-introduction.tex。
-目标：补全“研究背景”和“研究意义”。
+目标：补全"研究背景"和"研究意义"。
 依据：docs/thesis-config.md、docs/outline.md、docs/references.bib。
 限制：不要编造引用；没有来源的位置用 [需要引用] 标记。
 ```
@@ -206,7 +243,7 @@ LaTeX 中引用：
 
 - 所有 `\cite{}` 都能在 `references.bib` 中找到。
 - 图表编号、标题和正文引用一致。
-- 摘要、关键词、中英文题名已经更新。
+- 摘要、关键词、中英文题名已经更新（根据学校要求）。
 - 目录能正确生成。
 - 编译至少完整跑过一次 `latexmk -xelatex main.tex`。
-- 格式要求与学院最新通知一致。
+- 格式要求与学校最新通知一致。

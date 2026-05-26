@@ -1,6 +1,6 @@
 # 从 LaTeX 模板提取 Word 格式
 
-本项目提供了一份从华理硕士论文 LaTeX 格式参数提取出来的 Word 格式映射规格：
+本项目提供了一份从内置默认 LaTeX 格式参数（基于 ECUST 硕士论文）提取出来的 Word 格式映射规格：
 
 ```text
 word-template/ecust-word-format-spec.md
@@ -41,7 +41,7 @@ Word 和 LaTeX PDF 逐页完全一致
 把它作为 AI 创建或调整 Word 审阅模板的依据：
 
 ```text
-请根据 word/ecust-word-format-spec.md，生成一个华理硕士论文 Word 审阅模板。
+请根据 word/ecust-word-format-spec.md，生成一个符合我的学位论文要求的 Word 审阅模板。
 ```
 
 或：

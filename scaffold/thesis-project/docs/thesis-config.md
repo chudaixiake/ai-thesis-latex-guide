@@ -28,5 +28,5 @@
 
 ## Known Constraints
 
-- Confirm the latest ECUST and college formatting requirements before final submission.
+- Confirm the latest school and college formatting requirements before final submission.
 - Do not use unsupported references or fabricated data.

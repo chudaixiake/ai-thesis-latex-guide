@@ -1,21 +1,21 @@
-# ECUST Master Thesis AI LaTeX Guide
+# AI Thesis LaTeX Guide
 
-面向华东理工大学硕士学位论文写作的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理导师 Word 批注。
+面向**通用学位论文写作**的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理导师 Word 批注。
 
-> 本项目不是华东理工大学官方发布页，不代表学校或学院的最终格式要求。正式提交前请以研究生院、学院和导师给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
+> 本项目不是任何学校或机构的官方发布页。内置默认模板基于华东理工大学硕士论文格式，但你可以随时换成其他学校的模板——只需告诉 Codex / Claude Code 即可。正式提交前请以你所在学校研究生院、学院和导师给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
 
 ## 这个项目解决什么
 
-它把从零开始写华理硕士论文需要配置的内容整理成一套可复制流程：
+它把从零开始写学位论文需要配置的内容整理成一套可复制流程：
 
 - 安装 TeX Live、VS Code、LaTeX Workshop、Zotero、Better BibTeX。
 - 安装适合论文写作的 Codex skills。
 - 一键生成类似 `D:\GraduationThesis` 的论文项目目录。
-- 默认生成符合内置华理硕士 LaTeX 格式模板的论文目录。
+- 默认生成符合内置 LaTeX 格式模板（ECUST 硕士论文示例）的论文目录；**想用其他学校模板？告诉 Codex 即可自动切换。**
 - 建立 `AGENTS.md`，让 Codex / Claude Code 每次都按固定论文流程工作。
 - 管理 Zotero 导出的 `references.bib`。
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
-- 从华理 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
+- 从默认 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
 
 ## 最短路径
 
@@ -206,7 +206,7 @@ powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destin
 - 复制 `scaffold/thesis-project/` 到目标目录。
 - 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
 - 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
-- 从 `format/template/ecust-master/` 复制完整华理硕士论文格式模板到 `paper/template/`。
+- 从 `format/template/ecust-master/` 复制完整格式模板（默认为 ECUST 硕士论文）到 `paper/template/`。**如需使用其他学校模板，在初始化后对 Codex 说"我要使用 XX 学校的模板"即可。**
 - 初始化 Git 并提交第一版。
 
 详细说明：
@@ -301,7 +301,7 @@ cd D:\GraduationThesis\paper
 latexmk -xelatex main.tex
 ```
 
-如果使用 `paper/template/` 中的华理模板：
+如果使用 `paper/template/` 中的默认模板：
 
 ```powershell
 cd D:\GraduationThesis\paper\template
@@ -374,13 +374,13 @@ docs/review/
 
 ## 第 8 步：Word 格式映射
 
-如果需要让 Word 审阅稿尽量接近华理 LaTeX 模板格式，参考：
+如果需要让 Word 审阅稿尽量接近 LaTeX 模板格式，参考：
 
 ```text
 word-template/ecust-word-format-spec.md
 ```
 
-该文件从华理 LaTeX 模板提取：
+该文件从默认 LaTeX 模板提取：
 
 - 页面设置
 - 正文字体和段落
@@ -399,11 +399,11 @@ word-template/ecust-word-format-spec.md
 
 ```text
 docs/          教程文档
-format/        内置华理硕士 LaTeX 格式模板
+format/        内置默认 LaTeX 格式模板（ECUST 硕士论文）
 scaffold/      可复制的完整论文项目骨架
 scripts/       检查、初始化、模板准备、Word 导出脚本
 template/      原创简化 LaTeX 示例模板
-word-template/ 从华理 LaTeX 模板提取的 Word 格式映射
+word-template/ 从 LaTeX 模板提取的 Word 格式映射
 ```
 
 `format/template/ecust-master/` 是初始化脚本默认使用的格式源。生成 `D:\GraduationThesis` 时，脚本会把它完整复制到 `D:\GraduationThesis\paper\template`，论文最终 PDF 应以这个目录里的 `template.tex` 为主入口。
@@ -416,7 +416,7 @@ word-template/ 从华理 LaTeX 模板提取的 Word 格式映射
 4. [用 Codex 或 Claude Code 写论文](docs/04-ai-writing-workflow.md)
 5. [常见编译问题](docs/05-troubleshooting.md)
 6. [安装和使用 Codex Skills](docs/06-codex-skills.md)
-7. [华理硕士论文项目建议](docs/07-ecust-master-thesis-workflow.md)
+7. [AI 辅助论文写作项目指南](docs/07-ecust-master-thesis-workflow.md)
 8. [一键创建论文项目](docs/08-one-command-thesis-project.md)
 9. [Word 批注往返流程](docs/09-word-review-workflow.md)
 10. [从 LaTeX 模板提取 Word 格式](docs/10-ecust-word-format-spec.md)

@@ -4,10 +4,12 @@
 
 ## 适用场景
 
-- 华东理工大学硕士论文写作。
+- 通用学位论文写作（硕士或博士，任何学校）。
 - 使用 LaTeX 管理论文正文。
 - 使用 Zotero + Better BibTeX 管理参考文献。
 - 使用 Codex 或 Claude Code 辅助写作、润色、查引用、做图表和审稿。
+
+> **内置默认模板为华东理工大学硕士论文格式。如需使用其他学校模板，初始化后对 Codex 说"我要使用 XX 学校的模板"即可。**
 
 ## 一键初始化
 
@@ -18,7 +20,13 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\GraduationThesis
 ```
 
-这个命令默认会把 `format\template\ecust-master` 中的完整华理硕士 LaTeX 格式模板复制到 `D:\GraduationThesis\paper\template`。后续正式论文排版以 `paper\template\template.tex` 为准。
+这个命令默认会把 `format\template\ecust-master` 中的完整 LaTeX 格式模板（默认为 ECUST 硕士论文）复制到 `D:\GraduationThesis\paper\template`。后续正式论文排版以 `paper\template\template.tex` 为准。
+
+> **想用其他学校的模板？** 初始化完成后对 Codex 说：
+
+```text
+我要使用 XX大学 的学位论文 LaTeX 模板，模板文件在 [路径]，请帮我调整 paper/template/ 的内容以匹配该模板。
+```
 
 如果目标目录已经有文件，并且你明确想覆盖同名骨架文件：
 
@@ -77,7 +85,7 @@ GraduationThesis/
 - `docs/ai-skills-workflow.md`：写论文时应该调用哪些 skills。
 - `docs/word-review-workflow.md`：导师使用 Word 批注时的往返流程。
 - `paper/main.tex`：简化 LaTeX 主文件。
-- `word/ecust-word-format-spec.md`：从华理 LaTeX 模板提取的 Word 格式映射规格。
+- `word/ecust-word-format-spec.md`：从 LaTeX 模板提取的 Word 格式映射规格（默认基于 ECUST 硕士论文模板）。
 - `paper/chapters/`：分章节正文。
 - `figures/`：论文图片。
 - `data/`：原始数据和处理后数据。
@@ -85,13 +93,19 @@ GraduationThesis/
 
 ## 使用学校模板格式
 
-初始化脚本默认使用项目内置格式源：
+初始化脚本默认使用项目内置格式源（ECUST 硕士论文模板）：
 
 ```text
 D:\ai-thesis-latex-guide\format\template\ecust-master
 ```
 
-如果后续需要重新生成 `paper\template`：
+> **想用其他学校的模板？** 告诉 Codex：
+
+```text
+我要使用 XX大学 的学位论文 LaTeX 模板，请帮我调整 paper/template/ 以匹配该模板。
+```
+
+如果后续需要重新生成 `paper\template`（使用默认 ECUST 模板）：
 
 ```powershell
 cd D:\ai-thesis-latex-guide
@@ -233,7 +247,7 @@ D:\GraduationThesis\docs\references.bib
 ```powershell
 git init
 git add .
-git commit -m "Initialize ECUST thesis project"
+git commit -m "Initialize thesis project"
 ```
 
 以后每完成一个阶段，可以让 Codex 或 Claude Code 提交：

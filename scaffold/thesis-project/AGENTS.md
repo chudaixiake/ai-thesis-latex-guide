@@ -2,19 +2,20 @@
 
 ## Project Scope
 
-- This repository is for an ECUST master thesis project.
+- This repository is for a thesis project (master's or doctoral, any school).
 - Main writing language: Chinese.
-- Writing style: formal, clear, restrained, and suitable for a master's thesis.
+- Writing style: formal, clear, restrained, and suitable for academic thesis.
 - Do not invent references, datasets, experimental results, page numbers, DOI values, or institutional requirements.
 - When source support is missing, mark the gap explicitly instead of filling it with plausible text.
-- This project is not an official ECUST template package; final formatting must follow the latest school, college, and supervisor requirements.
+- The default template in `paper/template/` is based on ECUST master thesis format. **To use another school's template, just tell Codex/Claude Code and it will adapt.**
+- Final formatting must follow the latest school, college, and supervisor requirements.
 
 ## Repository Layout
 
 - `paper/` contains LaTeX thesis files.
 - `paper/main.tex` is the thesis entry point.
 - `paper/chapters/` contains chapter files.
-- `paper/template/` contains the ECUST master thesis LaTeX format template copied from the guide project.
+- `paper/template/` contains the thesis LaTeX format template (default: ECUST master; replaceable by telling Codex).
 - `docs/` contains outlines, notes, proposals, and reference-management files.
 - `docs/references.bib` is the bibliography source exported by Zotero Better BibTeX.
 - `docs/notes/` contains literature reading notes. Use `docs/notes/literature-note-template.md` as the template for each paper.

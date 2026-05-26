@@ -1,6 +1,8 @@
-# ECUST Word Format Spec Extracted from LaTeX Template
+# Word Format Spec Extracted from LaTeX Template
 
 本文件从 `paper/template/template.tex` 中提取可映射到 Word 的格式规则，用于后续生成或调整 Word 审阅模板。
+
+> **注意：** 本文件基于内置默认模板（ECUST 硕士论文）提取。如果你使用其他学校的模板，请对 Codex 说"根据我的模板更新 Word 格式映射"，它会自动重新提取。
 
 来源：
 
@@ -68,7 +70,7 @@ Word 映射：
 
 | 区域 | 内容 | 样式 |
 | --- | --- | --- |
-| 左/偶页页眉 | 华东理工大学 + 硕士学位论文 | “华东理工大学”为楷体、四号、加粗；“硕士学位论文”为宋体、小四 |
+| 左/偶页页眉 | [学校名称] + [学位类型] 论文 | 根据学校模板要求设置 |
 | 右/奇页页眉 | 第 X 页 | 小四 |
 | 前置页页码 | 罗马数字 | I, II, III... |
 | 正文页页码 | 阿拉伯数字 | 1, 2, 3... |

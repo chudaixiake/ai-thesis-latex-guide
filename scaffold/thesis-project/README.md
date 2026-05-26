@@ -1,6 +1,8 @@
-# ECUST Master Thesis Project
+# Thesis Project
 
-这是一个面向华东理工大学硕士论文写作的项目骨架，用于配合 Codex 或 Claude Code 完成论文写作、文献管理、LaTeX 编译和版本管理。
+这是一个面向通用学位论文写作的项目骨架，用于配合 Codex 或 Claude Code 完成论文写作、文献管理、LaTeX 编译和版本管理。
+
+> **内置默认模板基于华东理工大学硕士论文格式。如需使用其他学校模板，告诉 Codex 即可自动切换。**
 
 ## 目录
 
@@ -55,14 +57,14 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-正式华理格式模板：
+正式格式模板（默认为 ECUST 硕士论文，可替换）：
 
 ```powershell
 cd paper\template
 latexmk -xelatex template.tex
 ```
 
-`paper\template` 由初始化脚本从教程仓库的 `format\template\ecust-master` 复制而来。字体、页边距、页眉、标题、目录和参考文献格式属于格式关键部分，不要让 AI 随意修改。
+`paper\template` 由初始化脚本从教程仓库的 `format\template\ecust-master` 复制而来。**这是默认模板；想用别的学校的模板？对 Codex 说"我要使用 XX 学校的模板"即可。** 字体、页边距、页眉、标题、目录和参考文献格式属于格式关键部分，不要让 AI 随意修改。
 
 ## 给 Codex / Claude Code 的常用指令
 
