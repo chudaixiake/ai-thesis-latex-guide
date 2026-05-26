@@ -13,7 +13,11 @@
 *.lof
 *.lot
 *.xdv
-*.pdf
+# Ignore LaTeX build output PDFs, but allow docs/ tutorial PDFs
+/*.pdf
+template/**/*.pdf
+scaffold/**/*.pdf
+paper/**/*.pdf
 
 template/ecust-master-prepared/
 
