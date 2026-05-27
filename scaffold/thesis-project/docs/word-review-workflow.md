@@ -18,8 +18,16 @@ docs/review/   导师返回的批注版 Word
 
 ## 导出 Word 审阅稿
 
+**Windows：**
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+**macOS / Linux：**
+
+```bash
+bash scripts/export-review-docx.sh
 ```
 
 默认生成：
@@ -27,6 +35,10 @@ powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 ```text
 docs/export/review-draft.docx
 ```
+
+### 已知限制
+
+Pandoc 将 LaTeX 转为 Word 时，页眉页脚、中文字体、目录样式和标题编号会丢失或不完全。`word/ecust-word-format-spec.md` 提供了格式映射规格。导师批注的重点是文字内容，最终格式以 LaTeX/PDF 为准。
 
 ## 导师批注回来后
 

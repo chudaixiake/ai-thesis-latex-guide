@@ -1,20 +1,47 @@
 % Main thesis entry point.
-% Based on the ECUST master thesis LaTeX template in paper/template/.
+% This is the simplified template — compile with: latexmk -xelatex main.tex
+% For the full project scaffold version, see scaffold/thesis-project/paper/main.tex.
 
 \documentclass[UTF-8,a4paper,twoside]{article}
 
+% ── 中文支持 ──
 \usepackage[UTF8,heading=true]{ctex}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% ── 页面布局 ──
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.0cm,headheight=2.0cm,footskip=1.2cm}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
 \setlist[enumerate]{label=(\arabic*),fullwidth,itemindent=\parindent,listparindent=\parindent,itemsep=0ex,partopsep=0pt,parsep=0ex,nosep}
 \raggedbottom
-\usepackage{layout}
-\usepackage{geometry}
+
+% ── 图表与浮动体 ──
 \usepackage{graphicx}
-\graphicspath{{../figures/}{template/}}
-\usepackage{listings}
+\graphicspath{{../figures/}}
+\usepackage{subfig}
+\makeatletter
+\let\c@lofdepth\relax
+\let\c@lotdepth\relax
+\makeatother
 \usepackage{float}
+\usepackage{caption}
+\captionsetup[figure]{belowskip=-2ex}
+\usepackage{bicaption}
+
+% ── 数学与表格 ──
+\usepackage{amsmath,lmodern}
+\usepackage{bm}
+\usepackage{booktabs}
+\newcommand{\topline}{\toprule[1.5pt]}
+\newcommand{\bottomline}{\bottomrule[1.5pt]}
+
+% ── 代码清单 ──
+\usepackage{listings}
+
+% ── 参考文献（GB/T 7714-2015）──
 \usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
 \addbibresource{../docs/references.bib}
 \renewcommand{\bibfont}{\zihao{-4}}
@@ -35,31 +62,51 @@
 \setlength{\belowdisplayskip}{1ex}
 }
 
-\usepackage{fontspec}
-\usepackage{amsmath,lmodern}
-\usepackage{xeCJK}
+% ── 目录样式 ──
 \usepackage{titletoc}
-\usepackage{bm}
-\usepackage{booktabs}
-
-\newcommand{\topline}{\toprule[1.5pt]}
-\newcommand{\bottomline}{\bottomrule[1.5pt]}
+\usepackage{tocloft}
 \renewcommand{\contentsname}{\zihao{4}\bfseries{目录}}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\setlength{\cftsubsubsecindent}{0em}
+\setlength{\cftbeforetoctitleskip}{1em}
+\setlength{\cftaftertoctitleskip}{2em}
+\renewcommand{\cftdotsep}{0.5}
+\renewcommand{\cftsecfont}{\zihao{4}}
+\renewcommand{\cftsecpagefont}{\zihao{4}}
+\renewcommand{\cftsubsecfont}{\zihao{-4}}
+\renewcommand{\cftsubsubsecfont}{\zihao{-4}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0em}
+\setlength{\cftbeforesubsecskip}{0em}
+\setlength{\cftbeforesubsubsecskip}{0em}
 
+% ── 编号格式 ──
 \numberwithin{equation}{section}
 \numberwithin{table}{section}
 \numberwithin{figure}{section}
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
-\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.0cm,headheight=2.0cm,footskip=1.2cm}
+\DeclareCaptionLabelSeparator{colon}{ \ \ }
+\DeclareCaptionFont{chfont}{\bfseries\zihao{5}}
+\DeclareCaptionFont{enfont}{\zihao{5}}
+\captionsetup[table]{font=chfont}
+\captionsetup[table][bi-second]{name=Table, font=enfont}
+\captionsetup[figure]{font=chfont}
+\captionsetup[figure][bi-second]{name=Fig., font=enfont}
+\DeclareCaptionFont{subfont}{\zihao{5}}
+\captionsetup[subfloat]{font=subfont}
+
+% ── 字体 ──
 \setmainfont{Times New Roman}
-\setCJKmainfont[Path=./SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
-\setCJKfamilyfont{zhsong}[Path=./SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
-\setCJKfamilyfont{zhhei}[Path=./SimHei/, Extension=.TTF, AutoFakeBold=true]{SIMHEI}
+\setCJKmainfont[Path=../format/template/ecust-master/SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
+\setCJKfamilyfont{zhsong}[Path=../format/template/ecust-master/SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
+\setCJKfamilyfont{zhhei}[Path=../format/template/ecust-master/SimHei/, Extension=.TTF, AutoFakeBold=true]{SIMHEI}
 \renewcommand{\songti}{\CJKfamily{zhsong}}
 \renewcommand{\heiti}{\CJKfamily{zhhei}}
 \let\kaishu\relax
-\newCJKfontfamily\kaishu[Path=./KaiTi/, Extension=.TTF, AutoFakeBold=true]{SIMKAI}
+\newCJKfontfamily\kaishu[Path=../format/template/ecust-master/KaiTi/, Extension=.TTF, AutoFakeBold=true]{SIMKAI}
 
+% ── 章节标题样式 ──
 \ctexset{
 	section={
 	name={第,章},
@@ -79,28 +126,47 @@
 	}
 }
 
+% ── 段落 ──
+\usepackage{parskip}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{2em}
+
+% ── PDF 超链接与目录导航 ──
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=blue,
+	citecolor=black,
+	pdfstartview=FitH,
+	bookmarks=true,
+	bookmarksnumbered=true
+}
+
+% ── 页眉页脚 ──
+% ★ 修改下面的 \SchoolName 和 \ThesisType 以匹配你的学校和学位类型。
+\newcommand{\SchoolName}{你的学校名称}
+\newcommand{\ThesisType}{硕士学位论文}
 
 \fancypagestyle{main}{
 \fancyhf{}
 \linespread{1.4375}
-\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{\SchoolName}\normalfont\songti\zihao{-4}{\ThesisType}}
 \fancyhead[RO,LE]{\zihao{-4}{第}\thepage{页}}
 }
 
 \fancypagestyle{pre}{
 \fancyhf{}
 \linespread{1.4375}
-\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{\SchoolName}\normalfont\songti\zihao{-4}{\ThesisType}}
 \fancyhead[RO,LE]{\zihao{-4}{第}\Roman{page}{页}}
 }
 
 \begin{document}
 
+% ── 中文封面 ──
 \pagestyle{pre}
 \thispagestyle{pre}
-
 \begin{center}
 	\heiti\zihao{4}论文题目
 \end{center}
@@ -114,6 +180,7 @@
 
 \noindent\zihao{-4}{\bfseries 关键词：}关键词一；关键词二；关键词三
 
+% ── 英文封面 ──
 \newpage
 \begin{center}
 	\zihao{4}\bfseries Thesis Title in English
@@ -128,13 +195,16 @@ Write the English abstract here.
 
 \noindent\zihao{-4}{\bfseries Keywords \ \ }keyword one; keyword two; keyword three
 
+% ── 目录 ──
 \newpage
 \thispagestyle{pre}
+\tocloftpagestyle{pre}
 \begin{center}
 	\tableofcontents
 \end{center}
 \thispagestyle{pre}
 
+% ── 正文 ──
 \newpage
 \pagestyle{main}
 \setcounter{page}{1}
@@ -145,15 +215,17 @@ Write the English abstract here.
 \newpage
 \input{chapters/03-method}
 \newpage
-\input{chapters/04-results}
+\input{chapters/04-analysis}
 \newpage
 \input{chapters/05-conclusion}
 
+% ── 参考文献 ──
 \newpage
 \addcontentsline{toc}{section}{参考文献}
 \defbibheading{bibliography}[\bibname]{\section*{#1}\bfseries\zihao{4}\heiti\normalfont}
 \printbibliography[heading=bibliography,title=参考文献]
 
+% ── 致谢 ──
 \newpage
 \addcontentsline{toc}{section}{致谢}
 \begin{center}
@@ -161,6 +233,6 @@ Write the English abstract here.
 \end{center}
 \vspace{\baselineskip}
 
-\zihao{-4}{这里填写致谢内容11111。}
+\zihao{-4}{这里填写致谢内容。}
 
 \end{document}

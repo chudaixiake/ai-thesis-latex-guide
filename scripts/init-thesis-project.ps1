@@ -45,7 +45,7 @@ try {
     if (-not (Test-Path -LiteralPath ".git")) {
         git init | Out-Null
         git add .
-        git commit -m "Initialize ECUST thesis project"
+        git commit -m "Initialize academic writing project"
     }
 }
 finally {

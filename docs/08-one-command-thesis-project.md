@@ -17,9 +17,18 @@
 
 在本教程仓库根目录运行：
 
+**Windows：**
+
 ```powershell
 cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/init-thesis-project.ps1 -Destination D:\MyPaper
+```
+
+**macOS / Linux：**
+
+```bash
+cd ~/ai-thesis-latex-guide
+bash scripts/init-thesis-project.sh ~/MyPaper
 ```
 
 这个命令会：
@@ -81,6 +90,7 @@ MyPaper/
     review/
   paper/
     main.tex
+    latexmkrc
     README.md
     chapters/
       01-introduction.tex
@@ -204,9 +214,18 @@ powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 `
 
 ## 导出 Word 给审稿人批注
 
+**Windows：**
+
 ```powershell
 cd D:\MyPaper
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+**macOS / Linux：**
+
+```bash
+cd ~/MyPaper
+bash scripts/export-review-docx.sh
 ```
 
 默认生成：
@@ -215,7 +234,7 @@ powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 docs/export/review-draft.docx
 ```
 
-这个 Word 文件用于审稿人/导师批注，不保证与最终 LaTeX PDF 完全同版。
+这个 Word 文件用于审稿人/导师批注，不保证与最终 LaTeX PDF 完全同版。Pandoc 转换时页眉页脚、中文字体、目录样式会丢失，重点是文字批注内容。
 
 返回的批注版 Word 放到：
 

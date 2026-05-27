@@ -14,16 +14,28 @@ docs/           配置、大纲、笔记、参考文献。
 figures/        图片和导出图表。
 paper/          LaTeX 主项目。
 scripts/        数据处理和绘图脚本。
+word/           Word 格式映射规格。
 ```
 
 ## 第一次使用
 
-1. 填写 `docs/thesis-config.md`（题目、目标、研究问题、方法等）。
+1. 填写 `docs/thesis-config.md`（题目、目标、研究问题、方法等，文件中有填写示例）。
 2. **替换模板**：把你目标学校或期刊的 LaTeX 模板给 Codex，让它适配 `paper/template/`。
 3. 修改 `docs/outline.md`。
 4. 在 Zotero 中建立文献 Collection，并用 Better BibTeX 自动导出到 `docs/references.bib`。
 5. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
 6. 正式排版优先编译 `paper/template/template.tex`。
+
+## 配置页眉
+
+`paper/main.tex` 中的页眉通过两个命令控制：
+
+```latex
+\newcommand{\SchoolName}{你的学校名称}
+\newcommand{\ThesisType}{硕士学位论文}
+```
+
+修改为你的实际学校名称和学位类型即可。如果你的学校使用不同的页眉格式，替换 `fancypagestyle` 的内容。
 
 ## 替换模板（生成骨架之后）
 
@@ -37,8 +49,16 @@ scripts/        数据处理和绘图脚本。
 
 ## 导出 Word 给审稿人批注
 
+**Windows：**
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+**macOS / Linux：**
+
+```bash
+bash scripts/export-review-docx.sh
 ```
 
 默认输出：
@@ -46,6 +66,10 @@ powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
 ```text
 docs/export/review-draft.docx
 ```
+
+### Word 导出的已知限制
+
+Pandoc 转换 Word 时，页眉页脚、中文字体、目录样式和标题编号会丢失或不完全。`word/ecust-word-format-spec.md` 提供了格式映射规格。导师批注的重点是文字内容，最终格式以 LaTeX/PDF 为准。
 
 返回的批注版 Word 放到：
 
@@ -62,6 +86,16 @@ word/ecust-word-format-spec.md
 ```
 
 > 换了新模板后，可以让 Codex 根据你的实际模板重新提取 Word 格式映射。
+
+## 章节写作指引
+
+`paper/chapters/` 下的每个 .tex 文件都包含注释说明：
+
+- 每章建议的字数范围
+- 每个小节应写什么内容
+- 引用和图表的使用示例
+
+按照注释中的指引填写内容即可。
 
 ## 常用命令
 

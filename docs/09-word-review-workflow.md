@@ -36,20 +36,26 @@ word-template/ecust-word-format-spec.md
 学术写作项目骨架自带：
 
 ```text
-scripts/export-review-docx.ps1
+scripts/export-review-docx.ps1    (Windows)
+scripts/export-review-docx.sh     (macOS / Linux)
 ```
 
-本教程仓库根目录也提供了同名通用脚本：
-
-```text
-scripts/export-review-docx.ps1
-```
+本教程仓库根目录也提供了同名通用脚本。
 
 在项目里运行：
+
+**Windows：**
 
 ```powershell
 cd D:\MyPaper
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1
+```
+
+**macOS / Linux：**
+
+```bash
+cd ~/MyPaper
+bash scripts/export-review-docx.sh
 ```
 
 或者从本教程仓库对指定项目运行：
@@ -59,6 +65,10 @@ cd D:\ai-thesis-latex-guide
 powershell -ExecutionPolicy Bypass -File scripts/export-review-docx.ps1 `
   -ProjectRoot D:\MyPaper
 ```
+
+> 📸 **截图 7**：Word 导出成功后的终端输出 + Word 审阅稿效果图。
+>
+> ![Word 导出效果](images/07-word-export.png)
 
 默认输出：
 

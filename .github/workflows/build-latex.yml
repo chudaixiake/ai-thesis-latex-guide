@@ -1,0 +1,50 @@
+name: Build LaTeX
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scaffold/thesis-project/paper/**'
+      - 'template/**'
+      - 'format/**'
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-scaffold:
+    name: Build scaffold main.tex
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: scaffold/thesis-project/paper
+          latexmk_use_xelatex: true
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: scaffold-pdf
+          path: scaffold/thesis-project/paper/main.pdf
+
+  build-template:
+    name: Build simplified template
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: template
+          latexmk_use_xelatex: true
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: template-pdf
+          path: template/main.pdf

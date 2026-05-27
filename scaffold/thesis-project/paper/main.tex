@@ -1,25 +1,48 @@
 % Main thesis entry point.
-% Based on the ECUST master thesis LaTeX template.
+% Replace the header text below to match your school or journal.
+% If using a specific template (e.g. paper/template/template.tex),
+% compile that file instead of this one.
 
 \documentclass[UTF-8,a4paper,twoside]{article}
 
+% ── 中文支持 ──
 \usepackage[UTF8,heading=true]{ctex}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% ── 页面布局 ──
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.0cm,headheight=2.0cm,footskip=1.2cm}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
 \setlist[enumerate]{label=(\arabic*),fullwidth,itemindent=\parindent,listparindent=\parindent,itemsep=0ex,partopsep=0pt,parsep=0ex,nosep}
 \raggedbottom
-\usepackage{layout}
-\usepackage{geometry}
+
+% ── 图表与浮动体 ──
 \usepackage{graphicx}
-\graphicspath{{../figures/}{template/}}
+\graphicspath{{../figures/}}
 \usepackage{subfig}
 \makeatletter
 \let\c@lofdepth\relax
 \let\c@lotdepth\relax
 \makeatother
-\usepackage{listings}
 \usepackage{float}
+\usepackage{caption}
+\captionsetup[figure]{belowskip=-2ex}
+\usepackage{bicaption}
+
+% ── 数学与表格 ──
+\usepackage{amsmath,lmodern}
+\usepackage{bm}
+\usepackage{booktabs}
+\newcommand{\topline}{\toprule[1.5pt]}
+\newcommand{\bottomline}{\bottomrule[1.5pt]}
+
+% ── 代码清单 ──
+\usepackage{listings}
+
+% ── 参考文献（GB/T 7714-2015）──
 \usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
 \addbibresource{../docs/references.bib}
 \renewcommand{\bibfont}{\zihao{-4}}
@@ -40,19 +63,9 @@
 \setlength{\belowdisplayskip}{1ex}
 }
 
-\usepackage{fontspec}
-\usepackage{caption}
-\captionsetup[figure]{belowskip=-2ex}
-\usepackage{bicaption}
-\usepackage{amsmath,lmodern}
-\usepackage{xeCJK}
+% ── 目录样式 ──
 \usepackage{titletoc}
 \usepackage{tocloft}
-\usepackage{bm}
-\usepackage{booktabs}
-
-\newcommand{\topline}{\toprule[1.5pt]}
-\newcommand{\bottomline}{\bottomrule[1.5pt]}
 \renewcommand{\contentsname}{\zihao{4}\bfseries{目录}}
 \setlength{\cftsecindent}{0em}
 \setlength{\cftsubsecindent}{0em}
@@ -69,6 +82,7 @@
 \setlength{\cftbeforesubsecskip}{0em}
 \setlength{\cftbeforesubsubsecskip}{0em}
 
+% ── 编号格式 ──
 \numberwithin{equation}{section}
 \numberwithin{table}{section}
 \numberwithin{figure}{section}
@@ -83,7 +97,7 @@
 \DeclareCaptionFont{subfont}{\zihao{5}}
 \captionsetup[subfloat]{font=subfont}
 
-\geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.0cm,headheight=2.0cm,footskip=1.2cm}
+% ── 字体 ──
 \setmainfont{Times New Roman}
 \setCJKmainfont[Path=./template/SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
 \setCJKfamilyfont{zhsong}[Path=./template/SimSun/, Extension=.TTC, AutoFakeBold=true]{SIMSUN}
@@ -93,6 +107,7 @@
 \let\kaishu\relax
 \newCJKfontfamily\kaishu[Path=./template/KaiTi/, Extension=.TTF, AutoFakeBold=true]{SIMKAI}
 
+% ── 章节标题样式 ──
 \ctexset{
 	section={
 	name={第,章},
@@ -112,26 +127,47 @@
 	}
 }
 
+% ── 段落 ──
 \usepackage{parskip}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{2em}
 
+% ── PDF 超链接与目录导航 ──
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=blue,
+	citecolor=black,
+	pdfstartview=FitH,
+	bookmarks=true,
+	bookmarksnumbered=true
+}
+
+% ── 页眉页脚 ──
+% ★ 修改下面的 \SchoolName 和 \ThesisType 以匹配你的学校和学位类型。
+%   例如：\newcommand{\SchoolName}{北京大学}  \newcommand{\ThesisType}{博士学位论文}
+%   如果你的学校模板使用不同的页眉格式，请替换 fancypagestyle 的内容。
+\newcommand{\SchoolName}{你的学校名称}
+\newcommand{\ThesisType}{硕士学位论文}
+
 \fancypagestyle{main}{
 \fancyhf{}
 \linespread{1.4375}
-\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{\SchoolName}\normalfont\songti\zihao{-4}{\ThesisType}}
 \fancyhead[RO,LE]{\zihao{-4}{第}\thepage{页}}
 }
 
 \fancypagestyle{pre}{
 \fancyhf{}
 \linespread{1.4375}
-\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{华东理工大学}\normalfont\songti\zihao{-4}{硕士学位论文}}
+\fancyhead[LO,RE]{\kaishu\bfseries\zihao{4}{\SchoolName}\normalfont\songti\zihao{-4}{\ThesisType}}
 \fancyhead[RO,LE]{\zihao{-4}{第}\Roman{page}{页}}
 }
 
 \begin{document}
 
+% ── 中文封面 ──
 \pagestyle{pre}
 \thispagestyle{pre}
 \begin{center}
@@ -147,6 +183,7 @@
 
 \noindent\zihao{-4}{\bfseries 关键词：}关键词一；关键词二；关键词三
 
+% ── 英文封面 ──
 \newpage
 \begin{center}
 	\zihao{4}\bfseries Your English Thesis Title
@@ -161,6 +198,7 @@ Write the English abstract here.
 
 \noindent\zihao{-4}{\bfseries Keywords \ \ }keyword one; keyword two; keyword three
 
+% ── 目录 ──
 \newpage
 \thispagestyle{pre}
 \tocloftpagestyle{pre}
@@ -169,6 +207,7 @@ Write the English abstract here.
 \end{center}
 \thispagestyle{pre}
 
+% ── 正文 ──
 \newpage
 \pagestyle{main}
 \setcounter{page}{1}
@@ -183,11 +222,13 @@ Write the English abstract here.
 \newpage
 \input{chapters/05-conclusion}
 
+% ── 参考文献 ──
 \newpage
 \addcontentsline{toc}{section}{参考文献}
 \defbibheading{bibliography}[\bibname]{\section*{#1}\bfseries\zihao{4}\heiti\normalfont}
 \printbibliography[heading=bibliography,title=参考文献]
 
+% ── 致谢 ──
 \newpage
 \addcontentsline{toc}{section}{致谢}
 \begin{center}
