@@ -375,7 +375,7 @@ latexmk -xelatex template.tex
 \usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
 ```
 
-> 编译成功后生成的 PDF 效果图（封面页或正文第一页）。
+> 编译成功后生成的 PDF 效果图。
 
 <div align="center">
   <img src="docs/images/05-pdf-output.png" alt="PDF 输出效果" />
