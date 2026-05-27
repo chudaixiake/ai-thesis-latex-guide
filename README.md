@@ -4,7 +4,7 @@
 
 > 本项目不是任何学校或机构的官方发布页。内置默认模板基于华东理工大学硕士论文格式作为示例，但你可以使用**任何学校学位论文或期刊的 LaTeX 模板**——只需把模板文件给 Codex / Claude Code，它会在生成项目骨架后自动适配。正式提交前请以目标（学校研究生院 / 期刊编辑部）给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
 
-> 📸 **截图 1**：运行 init 脚本后的项目目录结构（VS Code 资源管理器或文件管理器）。
+> 运行 init 脚本后的项目目录结构（VS Code 资源管理器或文件管理器）。
 
 <div align="center">
   <img src="docs/images/01-project-structure.png" alt="项目目录结构" />
@@ -124,7 +124,7 @@ D:\MyPaper
 - [配置 Zotero 与 Better BibTeX](docs/03-zotero-better-bibtex.md)
 - [常见编译问题](docs/05-troubleshooting.md)
 
-> 📸 **截图 2**：VS Code 中 LaTeX Workshop 编译成功（左侧 .tex、右侧 PDF 预览）。
+> VS Code 中 LaTeX Workshop 编译成功（左侧 .tex、右侧 PDF 预览）。
 
 <div align="center">
   <img src="docs/images/02-vscode-latex-workshop.png" alt="VS Code LaTeX Workshop" />
@@ -160,7 +160,7 @@ pandoc
 D:\texlive\2026\bin\windows
 ```
 
-> 📸 **截图 3**：运行环境检查脚本后的终端输出（所有工具显示 OK / FOUND）。
+> 运行环境检查脚本后的终端输出（所有工具显示 OK / FOUND）。
 
 <div align="center">
   <img src="docs/images/03-env-check.png" alt="环境检查结果" />
@@ -300,7 +300,7 @@ Keep updated
 D:\MyPaper\docs\references.bib
 ```
 
-> 📸 **截图 4**：Zotero 中设置 Better BibTeX 自动导出（Export Collection + Keep updated）。
+> Zotero 中设置 Better BibTeX 自动导出（Export Collection + Keep updated）。
 
 <div align="center">
   <img src="docs/images/04-zotero-export.png" alt="Zotero 导出设置" />
@@ -375,7 +375,7 @@ latexmk -xelatex template.tex
 \usepackage[backend=biber,style=gb7714-2015,gbalign=left,gbnamefmt=lowercase]{biblatex}
 ```
 
-> 📸 **截图 5**：编译成功后生成的 PDF 效果图（封面页或正文第一页）。
+> 编译成功后生成的 PDF 效果图（封面页或正文第一页）。
 
 <div align="center">
   <img src="docs/images/05-pdf-output.png" alt="PDF 输出效果" />
