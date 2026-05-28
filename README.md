@@ -23,6 +23,17 @@
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
 - 从默认 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
 
+## 本次更新：轻量 AI 写作 Harness
+
+这次更新把项目从“目录骨架 + 写作提示”进一步升级为“可控的 AI 学术写作工作台”。新生成的项目会内置一套轻量 Harness，用来约束 Codex / Claude Code 的工作流程：
+
+- `docs/workflow/writing-pipeline.md`：把论文写作拆成项目配置、大纲确认、文献整理、单元写作、引用检查、LaTeX 验证、Word 审阅和交付总结等阶段。
+- `docs/workflow/quality-gates.md`：把“不编造引用”“不误改模板”“优先编译检查”“保留待确认标记”等要求写成可复查的质量门禁。
+- `docs/workflow/change-log-template.md`：为每轮重要写作、模板适配或审稿修改提供工作日志模板。
+- `docs/worklog/`：沉淀每次修改的输入材料、修改范围、验证结果和遗留问题，避免长周期论文写作中上下文丢失。
+
+它的目标不是让 AI 一次性写完整篇论文，而是让 AI 按“计划 → 修改 → 检查 → 记录”的节奏工作。这样更适合真实论文场景：文献不能编造，格式不能乱改，导师批注要可追踪，LaTeX 修改后要能验证。
+
 ## 最短路径
 
 已经安装好 TeX Live、VS Code、Zotero、Pandoc，并且 Codex skills 也装好后，只需要：
