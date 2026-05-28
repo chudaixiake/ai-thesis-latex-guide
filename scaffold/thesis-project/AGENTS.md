@@ -28,6 +28,8 @@
 ## AI Skills Protocol
 
 - Before handling academic writing, literature review, citation, polishing, figure, data, review, or presentation tasks, read and follow `docs/ai-skills-workflow.md`.
+- For major chapter drafting, template adaptation, reviewer/supervisor revision, citation cleanup, or formatting changes, also read `docs/workflow/writing-pipeline.md` and `docs/workflow/quality-gates.md`.
+- For each major task, create or update a worklog under `docs/worklog/YYYY-MM-DD-task-name/summary.md` using `docs/workflow/change-log-template.md`.
 - Choose skills by task stage:
   - Research planning and literature discovery: `deep-research`, `academic-paper`, `nature-academic-search`.
   - Paper reading and note extraction: `nature-reader`. Save each paper's notes as `docs/notes/{citation-key}.md` using the template in `docs/notes/literature-note-template.md`.
@@ -45,13 +47,23 @@
 ## Writing Workflow
 
 - Start from `docs/thesis-config.md` and `docs/outline.md` before drafting full content.
+- Treat `AGENTS.md` as an index and map. Load deeper workflow files only when the task requires them.
 - Draft and revise one section at a time.
+- Before substantial edits, write a short plan and expected outputs in the current `docs/worklog/` entry.
 - Keep claim-evidence links explicit: each important claim should have a citation, result, or user-provided source.
 - Prefer concise paragraphs with clear topic sentences.
 - Keep terminology consistent across the entire document.
 - Use `docs/literature-matrix.md` to track all papers at a glance; keep detailed notes per paper in `docs/notes/{citation-key}.md` using the template `docs/notes/literature-note-template.md`.
 - When writing the literature review, consult the notes in `docs/notes/` and the matrix in `docs/literature-matrix.md`.
 - For reviewer/supervisor Word comments, follow `docs/word-review-workflow.md`: export Word files to `docs/export/`, store returned annotated files in `docs/review/`, summarize comments into a revision roadmap, then apply changes back to LaTeX.
+- After each major writing round, update the worklog with changed files, citation gaps, validation results, and next steps.
+
+## Quality Gates
+
+- Do not mark a major writing task complete until unresolved citation, data, formatting, and compilation issues are listed.
+- Prefer mechanical checks where possible: BibTeX key lookup, LaTeX compilation, file path checks, and review-doc export checks.
+- If `latexmk -xelatex main.tex` cannot be run locally, state that clearly and record the reason in the worklog.
+- Keep execution and review separate for important changes: after drafting, review the output against `docs/workflow/quality-gates.md` before final delivery.
 
 ## LaTeX Rules
 

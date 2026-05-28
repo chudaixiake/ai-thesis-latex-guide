@@ -52,7 +52,7 @@ cd D:\MyPaper
 让 Codex 或 Claude Code 开始：
 
 ```text
-请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md、docs/ai-skills-workflow.md 和 docs/workflow/writing-pipeline.md，之后按这些规则协助我写论文。
 ```
 
 ## 最终生成的项目
@@ -70,6 +70,11 @@ D:\MyPaper
 │  ├─ references.bib
 │  ├─ ai-skills-workflow.md
 │  ├─ word-review-workflow.md
+│  ├─ workflow
+│  │  ├─ writing-pipeline.md
+│  │  ├─ quality-gates.md
+│  │  └─ change-log-template.md
+│  ├─ worklog
 │  ├─ export
 │  ├─ review
 │  └─ notes
@@ -102,6 +107,8 @@ D:\MyPaper
 - `docs/outline.md`：论文大纲。
 - `docs/references.bib`：Zotero Better BibTeX 自动导出的参考文献库。
 - `docs/ai-skills-workflow.md`：论文各阶段应该调用哪些 skills。
+- `docs/workflow/`：AI 写作流程、质量门禁和工作日志模板，约束重大写作任务按计划、验证、追踪推进。
+- `docs/worklog/`：记录每轮重要写作、模板适配或审稿修改的输入、范围、验证结果和遗留问题。
 - `docs/word-review-workflow.md`：导师 Word 批注往返流程。
 - `paper/`：LaTeX 主稿。`main.tex` 的页眉通过 `\SchoolName` 和 `\ThesisType` 命令配置。
 - `word/ecust-word-format-spec.md`：从华理 LaTeX 模板提取的 Word 格式映射。
@@ -317,7 +324,7 @@ LaTeX 中引用：
 进入生成后的项目，先让 AI 读取规则：
 
 ```text
-请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md、docs/ai-skills-workflow.md 和 docs/workflow/writing-pipeline.md，之后按这些规则协助我写论文。
 ```
 
 补全论文配置：
