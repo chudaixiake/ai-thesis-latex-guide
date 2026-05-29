@@ -8,7 +8,7 @@
 
 - 本项目不是任何学校或期刊官方发布的格式包。
 - 本项目内置 `format/template/ecust-master/` 作为 **默认 LaTeX 格式示例**（华东理工大学硕士论文），仅供初始化时作为占位使用。
-- 初始化生成项目骨架后，**你应该替换为自己目标学校或期刊的实际模板**。正式排版以 `paper/template/template.tex` 为主入口。
+- 初始化生成项目骨架后，**你应该替换为自己目标学校或期刊的实际模板**。正式排版优先以 `paper/main.tex` 为主入口。
 - 最终格式要求应以你所在学校研究生院 / 期刊编辑部发布的最新文件为准。
 - 如果使用第三方开源模板，应遵守对应许可证并保留必要来源说明。
 
@@ -27,6 +27,11 @@ MyPaper/
     references.bib
     ai-skills-workflow.md
     word-review-workflow.md
+    workflow/
+      writing-pipeline.md
+      quality-gates.md
+      change-log-template.md
+    worklog/
     notes/
       literature-note-template.md
       {citation-key-1}.md
@@ -223,6 +228,8 @@ LaTeX 中引用：
 - 写作语言使用中文（或英文），风格正式、清晰、克制。
 - 不编造文献、数据、实验结果、页码、DOI 和格式要求。
 - 写作前参考 docs/ai-skills-workflow.md。
+- 重大写作、模板适配或审稿修改前，参考 docs/workflow/writing-pipeline.md 和 docs/workflow/quality-gates.md。
+- 每轮重要修改在 docs/worklog/ 下记录输入、范围、验证结果和遗留问题。
 - 引用必须来自 docs/references.bib 或用户明确提供的材料。
 - 修改 LaTeX 后尽量运行 latexmk -xelatex main.tex。
 ```
@@ -239,6 +246,7 @@ LaTeX 中引用：
 ## 提交前检查
 
 - 所有 `\cite{}` 都能在 `references.bib` 中找到。
+- 重要写作或修订任务已经更新 `docs/worklog/`。
 - 图表编号、标题和正文引用一致。
 - 摘要、关键词、题名已经更新（根据目标要求）。
 - 目录能正确生成。

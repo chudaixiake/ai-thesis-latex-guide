@@ -11,6 +11,8 @@ data/
   raw/          原始数据，不直接修改。
   processed/    清洗或处理后的数据。
 docs/           配置、大纲、笔记、参考文献。
+  workflow/     AI 写作流程、质量门禁和工作日志模板。
+  worklog/      每轮重要写作或修订的过程记录。
 figures/        图片和导出图表。
 paper/          LaTeX 主项目。
 scripts/        数据处理和绘图脚本。
@@ -23,8 +25,9 @@ word/           Word 格式映射规格。
 2. **替换模板**：把你目标学校或期刊的 LaTeX 模板给 Codex，让它适配 `paper/template/`。
 3. 修改 `docs/outline.md`。
 4. 在 Zotero 中建立文献 Collection，并用 Better BibTeX 自动导出到 `docs/references.bib`。
-5. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 工作。
-6. 正式排版优先编译 `paper/template/template.tex`。
+5. 让 Codex 或 Claude Code 按 `docs/ai-skills-workflow.md` 和 `docs/workflow/writing-pipeline.md` 工作。
+6. 重大写作、模板适配、审稿修改前，在 `docs/worklog/` 建立本轮工作日志。
+7. 正式排版优先编译 `paper/main.tex`。
 
 ## 配置页眉
 
@@ -104,7 +107,7 @@ cd paper
 latexmk -xelatex main.tex
 ```
 
-正式格式模板：
+如需单独测试占位模板：
 
 ```powershell
 cd paper\template
@@ -123,4 +126,9 @@ latexmk -xelatex template.tex
 使用 academic-paper 和 nature-writing，直接修改 paper/chapters/01-introduction.tex。
 目标：补全研究背景和研究意义。
 限制：不要编造引用；没有来源的位置用 [需要引用] 标记。
+```
+
+```text
+请按 docs/workflow/writing-pipeline.md 为本轮修改建立 docs/worklog/YYYY-MM-DD-intro-draft/summary.md，
+然后只修改 paper/chapters/01-introduction.tex，并按 docs/workflow/quality-gates.md 做交付检查。
 ```

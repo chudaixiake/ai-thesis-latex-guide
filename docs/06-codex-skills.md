@@ -110,6 +110,8 @@ nature-writing
 ## AI Skills Protocol
 
 - Before handling thesis writing, literature review, citation, polishing, figure, data, review, or defense-PPT tasks, read and follow `docs/ai-skills-workflow.md`.
+- For major chapter drafting, template adaptation, reviewer/supervisor revision, citation cleanup, or formatting changes, also read `docs/workflow/writing-pipeline.md` and `docs/workflow/quality-gates.md`.
+- For each major task, create or update a worklog under `docs/worklog/YYYY-MM-DD-task-name/summary.md`.
 - Choose skills by task stage:
   - Research planning and literature discovery: `deep-research`, `academic-paper`, `nature-academic-search`.
   - Paper reading and note extraction: `nature-reader`.
@@ -124,7 +126,7 @@ nature-writing
 - Do not bypass the workflow document for major thesis tasks unless the user explicitly asks for a one-off answer.
 ```
 
-同时在项目里放一份 `docs/ai-skills-workflow.md`，记录具体阶段流程。
+同时在项目里放一份 `docs/ai-skills-workflow.md`，记录具体阶段流程。重大写作任务建议再配套 `docs/workflow/` 和 `docs/worklog/`，用于记录计划、质量门禁和验证结果。
 
 ## 推荐调用流程
 

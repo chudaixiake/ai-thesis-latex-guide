@@ -2,6 +2,8 @@
 
 面向**通用学术写作**的项目化工作流：用 TeX Live / LaTeX 管正式排版，用 Zotero 管参考文献，用 Codex 或 Claude Code 辅助写作、检查引用、处理审稿人/导师批注。
 
+早期版本重点解决“AI 写论文环境怎么搭起来”：安装工具、生成目录、配置 LaTeX、接入 Zotero 和 skills。现在项目进一步加入 **Harness 思想**：不只给 AI 一个写作环境，还把上下文、流程、质量门禁和工作记录放进项目骨架里，让 AI 写作从一次性对话变成可追踪、可检查、可持续迭代的工程化流程。
+
 > 本项目不是任何学校或机构的官方发布页。内置默认模板基于华东理工大学硕士论文格式作为示例，但你可以使用**任何学校学位论文或期刊的 LaTeX 模板**——只需把模板文件给 Codex / Claude Code，它会在生成项目骨架后自动适配。正式提交前请以目标（学校研究生院 / 期刊编辑部）给出的最新要求为准。若使用第三方模板，请遵守对应许可证并保留必要署名。
 
 > 运行 init 脚本后的项目目录结构（VS Code 资源管理器或文件管理器）。
@@ -22,6 +24,26 @@
 - 管理 Zotero 导出的 `references.bib`。
 - 提供 LaTeX 正式稿 + Word 导师批注稿的双轨流程。
 - 从默认 LaTeX 模板中提取 Word 格式映射规格，作为生成 Word 审阅模板的依据。
+
+## 本次更新：轻量 AI 写作 Harness
+
+这次更新把项目从“目录骨架 + 写作提示”进一步升级为“可控的 AI 学术写作工作台”。它借鉴 Harness Engineering 的核心思想：AI 不应该只靠一段 prompt 工作，而应该在一个有规则、有上下文、有检查、有追踪记录的环境中工作。
+
+对论文写作来说，Harness 主要解决四类问题：
+
+- **上下文不会散**：题目、研究问题、大纲、文献矩阵、笔记和格式要求都放在固定位置，AI 每次接手都知道先读什么。
+- **流程不会跳**：重大写作不直接生成全文，而是按“计划 → 修改 → 检查 → 记录”推进。
+- **质量可复查**：引用真实性、LaTeX 编译、模板边界、待确认内容都有明确检查项。
+- **修改可追踪**：每轮写作、模板适配、导师批注回填都能留下工作日志，方便长周期论文持续推进。
+
+新生成的项目会内置一套轻量 Harness，用来约束 Codex / Claude Code 的工作流程：
+
+- `docs/workflow/writing-pipeline.md`：把论文写作拆成项目配置、大纲确认、文献整理、单元写作、引用检查、LaTeX 验证、Word 审阅和交付总结等阶段。
+- `docs/workflow/quality-gates.md`：把“不编造引用”“不误改模板”“优先编译检查”“保留待确认标记”等要求写成可复查的质量门禁。
+- `docs/workflow/change-log-template.md`：为每轮重要写作、模板适配或审稿修改提供工作日志模板。
+- `docs/worklog/`：沉淀每次修改的输入材料、修改范围、验证结果和遗留问题，避免长周期论文写作中上下文丢失。
+
+它的目标不是让 AI 一次性写完整篇论文，而是让 AI 按“计划 → 修改 → 检查 → 记录”的节奏工作。这样更适合真实论文场景：文献不能编造，格式不能乱改，导师批注要可追踪，LaTeX 修改后要能验证。
 
 ## 最短路径
 
@@ -52,7 +74,7 @@ cd D:\MyPaper
 让 Codex 或 Claude Code 开始：
 
 ```text
-请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md、docs/ai-skills-workflow.md 和 docs/workflow/writing-pipeline.md，之后按这些规则协助我写论文。
 ```
 
 ## 最终生成的项目
@@ -70,6 +92,11 @@ D:\MyPaper
 │  ├─ references.bib
 │  ├─ ai-skills-workflow.md
 │  ├─ word-review-workflow.md
+│  ├─ workflow
+│  │  ├─ writing-pipeline.md
+│  │  ├─ quality-gates.md
+│  │  └─ change-log-template.md
+│  ├─ worklog
 │  ├─ export
 │  ├─ review
 │  └─ notes
@@ -102,6 +129,8 @@ D:\MyPaper
 - `docs/outline.md`：论文大纲。
 - `docs/references.bib`：Zotero Better BibTeX 自动导出的参考文献库。
 - `docs/ai-skills-workflow.md`：论文各阶段应该调用哪些 skills。
+- `docs/workflow/`：AI 写作流程、质量门禁和工作日志模板，约束重大写作任务按计划、验证、追踪推进。
+- `docs/worklog/`：记录每轮重要写作、模板适配或审稿修改的输入、范围、验证结果和遗留问题。
 - `docs/word-review-workflow.md`：导师 Word 批注往返流程。
 - `paper/`：LaTeX 主稿。`main.tex` 的页眉通过 `\SchoolName` 和 `\ThesisType` 命令配置。
 - `word/ecust-word-format-spec.md`：从华理 LaTeX 模板提取的 Word 格式映射。
@@ -317,7 +346,7 @@ LaTeX 中引用：
 进入生成后的项目，先让 AI 读取规则：
 
 ```text
-请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md、docs/ai-skills-workflow.md 和 docs/workflow/writing-pipeline.md，之后按这些规则协助我写论文。
 ```
 
 补全论文配置：

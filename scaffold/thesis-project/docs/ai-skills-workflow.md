@@ -13,6 +13,12 @@ deep-research
 
 ## Stage Guide
 
+重大写作任务应同时参考：
+
+- `docs/workflow/writing-pipeline.md`
+- `docs/workflow/quality-gates.md`
+- `docs/workflow/change-log-template.md`
+
 ### Research planning
 
 Use:
@@ -103,3 +109,4 @@ Prompt:
 - Do not hide third-party template sources or bypass licenses.
 - Use Zotero-exported `docs/references.bib` as the citation source.
 - Major LaTeX changes should be compiled when local tools are available.
+- Major writing or revision tasks should leave a concise record under `docs/worklog/`.

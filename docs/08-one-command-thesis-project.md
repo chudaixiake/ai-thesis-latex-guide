@@ -35,7 +35,7 @@ bash scripts/init-thesis-project.sh ~/MyPaper
 
 1. 复制 `scaffold/thesis-project/` 到目标目录，生成通用项目骨架。
 2. 创建 `docs/`、`paper/`、`data/`、`figures/`、`scripts/`、`word/` 等目录。
-3. 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、Word 审阅流程。
+3. 写入 `AGENTS.md`、大纲、章节占位、AI skills 流程、写作质量门禁、工作日志模板和 Word 审阅流程。
 4. 从 `format\template\ecust-master` 复制默认格式模板到 `paper\template`（**这只是初始占位**）。
 5. 初始化 Git 并提交第一版。
 
@@ -85,6 +85,11 @@ MyPaper/
     references.bib
     ai-skills-workflow.md
     word-review-workflow.md
+    workflow/
+      writing-pipeline.md
+      quality-gates.md
+      change-log-template.md
+    worklog/
     notes/
     export/
     review/
@@ -122,6 +127,8 @@ MyPaper/
 - `docs/literature-matrix.md`：文献矩阵。
 - `docs/references.bib`：Zotero Better BibTeX 自动导出的参考文献库。
 - `docs/ai-skills-workflow.md`：写论文时应该调用哪些 skills。
+- `docs/workflow/`：AI 写作流程、质量门禁和工作日志模板。
+- `docs/worklog/`：每轮重要写作、模板适配或审稿修改的过程记录。
 - `docs/word-review-workflow.md`：审稿人/导师使用 Word 批注时的往返流程。
 - `paper/main.tex`：简化 LaTeX 主文件。
 - `word/ecust-word-format-spec.md`：从 LaTeX 模板提取的 Word 格式映射规格（初始基于 ECUST 示例，换模板后需重新提取）。
@@ -172,7 +179,7 @@ powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 `
 第一步，先让 AI 读取项目规则：
 
 ```text
-请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md 和 docs/ai-skills-workflow.md，之后按这些规则协助我写论文。
+请阅读 AGENTS.md、docs/thesis-config.md、docs/outline.md、docs/ai-skills-workflow.md 和 docs/workflow/writing-pipeline.md，之后按这些规则协助我写论文。
 ```
 
 第二步，填论文配置：
@@ -194,6 +201,13 @@ powershell -ExecutionPolicy Bypass -File scripts/prepare-ecust-template.ps1 `
 目标：补全研究背景和研究意义。
 依据：docs/thesis-config.md、docs/outline.md、docs/references.bib。
 限制：不要编造引用；没有来源的位置用 [需要引用] 标记。
+```
+
+如果是较大的章节写作、模板适配或导师批注修改，先建立工作日志：
+
+```text
+请按 docs/workflow/writing-pipeline.md 建立 docs/worklog/YYYY-MM-DD-task-name/summary.md，
+再执行本轮修改，并按 docs/workflow/quality-gates.md 记录验证结果。
 ```
 
 第五步，查引用：
